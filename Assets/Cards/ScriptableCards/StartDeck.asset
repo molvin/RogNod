@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startingDeck:
   - {fileID: 11400000, guid: deced0fa5a32fe34294e96e5b8022926, type: 2}
+  - {fileID: 11400000, guid: 7f66dce3b09c12045a32073e60afc94a, type: 2}
+  - {fileID: 11400000, guid: ba305af10777bfa4cab0d017439d6096, type: 2}
   handSize: 3

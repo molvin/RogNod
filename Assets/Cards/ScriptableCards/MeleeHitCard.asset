@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6888204fca626634d807cb179f1472bc, type: 3}
-  m_Name: ShockWaveTeleportCard
+  m_Name: MeleeHitCard
   m_EditorClassIdentifier: 
-  Target: 1
+  Target: 0
   Cost: 1
-  Title: ShockWavePort
-  Description: Shockwaves to target cell, taking the fastest path and damaging any
-    enemy on the way
-  Action: {fileID: 11400000, guid: 2264c44208c9268449c4e0351fa5db1c, type: 2}
+  Title: Melee
+  Description: Hit enemy character so hard they just get destroyed.
+  Action: {fileID: 11400000, guid: 6c99d29960c300f4ca21d8f84d1f8dec, type: 2}
   sprite: {fileID: 0}
