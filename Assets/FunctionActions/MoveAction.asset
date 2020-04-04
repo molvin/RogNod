@@ -14,5 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: 
   Icon: {fileID: 0}
+  Origin: {fileID: 0}
+  Target: {fileID: 0}
   ActLerpTime: 1
   VisualLerpTime: 1
+  EnemyMoveDamage: 35
