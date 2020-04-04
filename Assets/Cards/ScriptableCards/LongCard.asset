@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6888204fca626634d807cb179f1472bc, type: 3}
+  m_Name: LongCard
+  m_EditorClassIdentifier: 
+  Target: 2
+  Cost: 1
+  Title: Reach Attack
+  Description: Attacks the adjacent node furthest away
+  Action: {fileID: 11400000, guid: 7a93315298cd8fd4b8ec51ddb2335665, type: 2}
+  sprite: {fileID: 0}
