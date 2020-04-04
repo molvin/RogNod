@@ -15,6 +15,10 @@ public class ShockWaveTeleport : FunctionAction
     {
         throw new System.NotImplementedException();
     }
+    public override void AIDecision()
+    {
+        throw new System.NotImplementedException();
+    }
     public override IEnumerator Act()
     {
         float time = 0;

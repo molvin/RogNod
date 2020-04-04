@@ -9,7 +9,8 @@ public abstract class FunctionAction : ScriptableObject
     protected Entity actor;
     public Node Origin, Target;
 
-    public abstract void Initialize(Entity actor);
+    public virtual void Initialize(Entity actor) { this.actor = actor; }
+    public abstract void AIDecision();
     public abstract IEnumerator Visualize();
     public abstract IEnumerator Act();
 }

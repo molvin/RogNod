@@ -16,6 +16,10 @@ public class Move : FunctionAction
         this.actor = actor;
         this.origin = actor.Node;
     }
+    public override void AIDecision()
+    {
+        throw new System.NotImplementedException();
+    }
     public override IEnumerator Act()
     {
         float time = 0;
