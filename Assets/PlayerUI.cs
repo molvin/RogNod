@@ -115,17 +115,18 @@ public class PlayerUI : MonoBehaviour
     {
         //Check if target type resolves
         bool valid = false;
-        if(SelectedCard.Target == Card.TargetType.Adjacent)
+        if (SelectedCard.Target == Card.TargetType.Adjacent)
         {
             Node origin = GameLoop.Instance.Player.Node;
             if (HoveredNode.Edges.Any(e => e.To == origin))
                 valid = true;
         }
-        else if(SelectedCard.Target == Card.TargetType.Any)
+        else if (SelectedCard.Target == Card.TargetType.Any)
         {
             valid = true;
         }
-
+        else if (SelectedCard.Target == Card.TargetType.None)
+            valid = true;
         if (!valid)
         {
             //TODO: visualize?
@@ -161,9 +162,11 @@ public class PlayerUI : MonoBehaviour
     {
         if (SelectedCard == null || pendingAction == null)
         {
+            Debug.Log("DOING IT: " + SelectedCard + " " + pendingAction);
 
             return;
         }
+    
         pendingAction.ResetVisualization();
         GameLoop.Instance.PlayerState.SetAction(pendingAction);
         GameLoop.Instance.PlayerState.Executing = true;
@@ -208,6 +211,7 @@ public class PlayerUI : MonoBehaviour
         if(SelectedCard != null && SelectedCard.Target == Card.TargetType.None && c == SelectedCard)
         {
             PerformAction();
+            return;
         }
         SelectedCard = c;
 
@@ -222,7 +226,8 @@ public class PlayerUI : MonoBehaviour
             case Card.TargetType.None:
                 Text.text = "Click card again to act";
                 CreateAction();
-                break;
+
+                return;
         }
 
         pendingAction = null;
