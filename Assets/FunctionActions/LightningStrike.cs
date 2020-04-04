@@ -29,6 +29,7 @@ public class LightningStrike : FunctionAction
         for (int i = Target.Occupants.Count - 1; i >= 0; i--)
         {
             Entity e = Target.Occupants[i];
+            Debug.Log("Damaging enemy: " + e.name);
             e.Health -= damage;
         }
         yield return null;
