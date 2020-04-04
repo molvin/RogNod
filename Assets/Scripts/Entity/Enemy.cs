@@ -1,15 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Enemy : Entity
 {
     [SerializeField] private List<FunctionAction> actionDeck;
     [HideInInspector] public FunctionAction action;
+    public TextMeshProUGUI HpText;
 
     public override int Health { get => health; set
         {
             health = value;
+            HpText.text = Mathf.Max(health, 0).ToString();
             if (health <= 0)
             {
                 Node.RemoveOccupant(this);

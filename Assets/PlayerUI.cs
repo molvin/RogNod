@@ -190,7 +190,9 @@ public class PlayerUI : MonoBehaviour
             Destroy(b.gameObject);
         }
         hand.Clear();
-        List<Card> cs = new List<Card>(cards);
+        List<Card> cs = new List<Card>();
+        foreach (Card c in cards)
+            cs.Add(c);
         cs.Add(MoveCard);
         cs.Reverse();
         foreach(Card c in cs)
@@ -240,6 +242,7 @@ public class PlayerUI : MonoBehaviour
         GameLoop.Instance.PlayerState.InState = false;
         CurrentEnergy = MaxEnergy;
         inState = false;
+        Text.text = "";
     }
 
     private IEnumerator Visualize()
