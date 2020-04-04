@@ -243,6 +243,7 @@ GameObject:
   - component: {fileID: 7669588008581128436}
   - component: {fileID: 2141768841233537525}
   - component: {fileID: 5228601459718022646}
+  - component: {fileID: 3480087714566365277}
   m_Layer: 5
   m_Name: UICard
   m_TagString: Untagged
@@ -351,6 +352,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3480087714566365277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143900552417767995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37f53561fdaae954093c20138554f19f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Title: {fileID: 8100117223320672470}
+  Description: {fileID: 6730310133963555791}
 --- !u!1 &3425741488835433035
 GameObject:
   m_ObjectHideFlags: 0

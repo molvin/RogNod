@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6888204fca626634d807cb179f1472bc, type: 3}
   m_Name: MoveCard
   m_EditorClassIdentifier: 
+  Target: 0
+  Cost: 1
   Title: Move
   Description: Move one node
   Action: {fileID: 11400000, guid: 18d96d790777cf84ba86413426f2f517, type: 2}

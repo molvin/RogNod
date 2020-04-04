@@ -11,6 +11,8 @@ public class Card : ScriptableObject
     }
     public TargetType Target;
 
+    public int Cost;
+
 #pragma warning disable CS0649
     [SerializeField]
     private string Title;

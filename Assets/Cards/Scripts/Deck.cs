@@ -103,7 +103,9 @@ public class Deck : ScriptableObject
 
     public void playCardFromHand(Card card)
     {
-        hand.Remove(card);
+        bool removed = hand.Remove(card);
+        Debug.Log(hand.Count);
+
         OnHandUpdate?.Invoke(hand);
     }
 
