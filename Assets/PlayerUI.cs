@@ -17,6 +17,7 @@ public class PlayerUI : MonoBehaviour
 
     private List<Button> hand = new List<Button>();
     private FunctionAction pendingAction = null;
+    private Coroutine VisualizeCoroutine;
 
     private void Start()
     {
@@ -27,38 +28,24 @@ public class PlayerUI : MonoBehaviour
 
     private void Update()
     {
+        if (GameLoop.Instance.PlayerState.Executing)
+            return;
+
         Node temp = HoveredNode;
         HoveredNode = Graph.GetNodeUnderMouse();
-        if(temp != HoveredNode)
-        {
-            if (HoveredNode != null)
-            {
-                //New hover
-                CreateAction();
-            }
-            else
-                Debug.Log("Lost hover");
-        }
 
+        if(temp != HoveredNode && HoveredNode != null)
+            CreateAction();
+        
 
-        if(Input.GetMouseButtonDown(0) && !GameLoop.Instance.PlayerState.Executing)
+        if(Input.GetMouseButtonDown(0) && pendingAction != null)
         {
-            if (HoveredNode != null)
-            {
-                PerformAction();
-            }
-            else
-                Debug.Log("Clicked nothing");
+            PerformAction();
         }
     }
 
     private void CreateAction()
     {
-        if (SelectedCard == null)
-        {
-            pendingAction = null;
-            return;
-        }
         //Check if target type resolves
         bool valid = false;
         if(SelectedCard.Target == Card.TargetType.Adjacent)
@@ -85,8 +72,14 @@ public class PlayerUI : MonoBehaviour
         action.Initialize(GameLoop.Instance.Player);
 
         //TODO: visualize
-
         pendingAction = action;
+
+        if (VisualizeCoroutine != null)
+        {
+            StopCoroutine(VisualizeCoroutine);
+        }
+
+        VisualizeCoroutine = StartCoroutine(Visualize());
     }
     
     private void PerformAction()
@@ -99,7 +92,8 @@ public class PlayerUI : MonoBehaviour
 
         GameLoop.Instance.PlayerState.SetAction(pendingAction);
         GameLoop.Instance.PlayerState.Executing = true;
-
+        HoveredNode = null;
+        pendingAction = null;
     }
     private void UpdateHand(List<Card> cards)
     {
@@ -124,6 +118,12 @@ public class PlayerUI : MonoBehaviour
     private void SelectCard(Card c)
     {
         SelectedCard = c;
+    }
+
+    private IEnumerator Visualize()
+    {
+        yield return pendingAction.Visualize();
+        VisualizeCoroutine = null;
     }
 
     private void OnGUI()
