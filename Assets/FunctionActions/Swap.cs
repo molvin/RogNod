@@ -15,6 +15,7 @@ public class Swap : FunctionAction
         this.actor = actor;
         //Set origin to actor's current Node
         Origin = actor.Node;
+        Target = GameLoop.Instance.Player.Node;
         targetSwapEntity = Target.Occupants;
 
         Target = targetSwapEntity[0].Node;

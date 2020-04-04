@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38fb231e9c5d83b4a9dcecd3e3cb75a6, type: 3}
   m_Name: ShockWaveTeleportAction
   m_EditorClassIdentifier: 
-  Name: 
+  Name: LightningStrike
   Icon: {fileID: 0}
-  Damage: 0
-  actLerpTime: 0
-  origin: {fileID: 0}
-  target: {fileID: 0}
+  Origin: {fileID: 0}
+  Target: {fileID: 0}
+  damage: 50
+  actLerpTime: 1
+  maxRange: 0
