@@ -20,6 +20,8 @@ public class Persistance : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+        Deck = Instantiate(Deck);
+        DrawDeck = Instantiate(DrawDeck);
         Deck.Initialize();
         DrawDeck.Initialize();
     }

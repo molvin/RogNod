@@ -31,6 +31,8 @@ public class PlayerUI : MonoBehaviour
     private bool won = false;
     public Animator Anim;
 
+    public TextMeshProUGUI Text;
+
     private void Start()
     {
         Deck = Persistance.Instance.Deck;
@@ -45,6 +47,7 @@ public class PlayerUI : MonoBehaviour
         {
             Energy.Add(Instantiate(EnergyPrefab, EnergyParent));
         }
+        Text.text = "";
     }
 
     private void Update()
@@ -80,6 +83,8 @@ public class PlayerUI : MonoBehaviour
             SelectedCard = null;
             return;
         }
+        if (SelectedCard.Target == Card.TargetType.None)
+            return;
 
         Node temp = HoveredNode;
         HoveredNode = Graph.GetNodeUnderMouse();
@@ -171,6 +176,7 @@ public class PlayerUI : MonoBehaviour
         }
         Deck.playCardFromHand(SelectedCard);
         SelectedCard = null;
+        Text.text = "";
     }
     private void UpdateHand(List<Card> cards)
     {
@@ -194,8 +200,31 @@ public class PlayerUI : MonoBehaviour
     private void SelectCard(Card c)
     {
         if (CurrentEnergy < c.Cost)
+        {
+            SelectedCard = null;
+            Text.text = "";
             return;
+        }
+        if(SelectedCard != null && SelectedCard.Target == Card.TargetType.None && c == SelectedCard)
+        {
+            PerformAction();
+        }
         SelectedCard = c;
+
+        switch (SelectedCard.Target)
+        {
+            case Card.TargetType.Adjacent:
+                Text.text = "Click an adjacent node to act";
+                break;
+            case Card.TargetType.Any:
+                Text.text = "Click any node to act";
+                break;
+            case Card.TargetType.None:
+                Text.text = "Click card again to act";
+                CreateAction();
+                break;
+        }
+
         pendingAction = null;
     }
     private void EndTurn()
