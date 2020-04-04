@@ -17,6 +17,6 @@ public abstract class State : ScriptableObject
 
     // Public Virtual Methods
     public virtual IEnumerator Enter() { yield return null; }
-    public virtual void Run() { }
+    public virtual IEnumerator Run() { yield return null; }
     public virtual IEnumerator Exit() { yield return null; }
 }

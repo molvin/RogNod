@@ -13,16 +13,19 @@ public class PlayerState : GameLoopState
         Debug.Log("Entered");
         yield return null;
     }
-    public override void Run()
+    public override IEnumerator Run()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            yield return action.Act();
             stateMachine.ChangeState<EnemyResolveState>();
         }
+        yield return null;
     }
     public override IEnumerator Exit()
     {
-        yield return action.Act();
+        Debug.Log("Exit Player State");
+        yield return null;
     }
     public void SetAction(FunctionAction action)
     {

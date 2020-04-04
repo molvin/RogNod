@@ -38,7 +38,7 @@ public class StateMachine
             currentState = queuedState;
             yield return currentState.Enter();
         }
-        currentState.Run();
+        yield return currentState.Run();
     }
     public void ChangeState<T>() where T : State
     {
