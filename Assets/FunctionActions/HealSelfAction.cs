@@ -35,7 +35,7 @@ public class HealSelfAction : FunctionAction
     public override IEnumerator Visualize()
     {
         visualization = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        visualization.transform.position = Target.transform.position;
+        visualization.transform.position = Origin.transform.position;
         yield return new WaitForSeconds(0.6f);
         Destroy(visualization);
     }
