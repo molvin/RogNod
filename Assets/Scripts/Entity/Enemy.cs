@@ -4,9 +4,5 @@ using UnityEngine;
 
 public class Enemy : Entity
 {
-    public class StubAction
-    {
-        public void Do() { }
-        public void Vizualize() { }
-    }
+    public FunctionAction action;
 }
