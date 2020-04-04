@@ -26,7 +26,9 @@ public class LightningStrike : FunctionAction
     public override IEnumerator Act()
     {
         Debug.Log("Play ParticleEffect");
-       foreach(Entity e in Target.Occupants){
+        for (int i = Target.Occupants.Count - 1; i >= 0; i--)
+        {
+            Entity e = Target.Occupants[i];
             e.Health -= damage;
         }
         yield return null;

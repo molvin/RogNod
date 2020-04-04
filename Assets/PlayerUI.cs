@@ -180,7 +180,6 @@ public class PlayerUI : MonoBehaviour
         VisualizeCoroutine = null;
     }
 
-
     private void OnGUI()
     {
         GUILayout.Label(SelectedCard == null ? "No selected card" : SelectedCard.getTitle());
