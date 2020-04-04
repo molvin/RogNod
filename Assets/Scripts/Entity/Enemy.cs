@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Enemy : Entity
 {
-    [SerializeField] private FunctionAction actionAsset;
+    [SerializeField] private List<FunctionAction> actionDeck;
     [HideInInspector] public FunctionAction action;
 
     public FunctionAction PickAction()
     {
-        action = Instantiate(actionAsset);
+        action = Instantiate(actionDeck[Random.Range(0, actionDeck.Count)]);
         action.Initialize(this);
+        action.AIDecision();
         return action;
     }
     public IEnumerator StubVisualize()

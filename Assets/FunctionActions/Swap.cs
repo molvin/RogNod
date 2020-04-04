@@ -22,6 +22,10 @@ public class Swap : FunctionAction
         //set target to target node where swaptarget is positioned
 
     }
+    public override void AIDecision()
+    {
+        throw new System.NotImplementedException();
+    }
     public override IEnumerator Act()
     {
         float time = 0;
