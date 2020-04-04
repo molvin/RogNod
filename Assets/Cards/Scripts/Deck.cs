@@ -22,6 +22,8 @@ public class Deck : ScriptableObject
 
     public void Initialize()
     {
+        OnHandUpdate = null;
+        OnPlayDeckUpdate = null;
         _permanentDeck = new List<Card>(_startingDeck);
         _cardQueue = new Queue<Card>(_permanentDeck);
         hand = new List<Card>();

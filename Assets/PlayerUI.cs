@@ -28,13 +28,16 @@ public class PlayerUI : MonoBehaviour
 
     public Button EndTurnButton;
     private bool inState = true;
+    private bool won = false;
+    public Animator Anim;
 
     private void Start()
     {
         CurrentEnergy = MaxEnergy;
-        Deck.OnHandUpdate += UpdateHand;
         Deck.Initialize();
+        Deck.OnHandUpdate += UpdateHand;
         Deck.refillHand();
+
 
         EndTurnButton.onClick.AddListener(EndTurn);
 
@@ -46,6 +49,17 @@ public class PlayerUI : MonoBehaviour
 
     private void Update()
     {
+        if(GameLoop.Instance.CurrentState is PickCardState)
+        {
+            if(!won)
+            {
+                won = true;
+                Anim.SetBool("PickCard", true);
+            }
+            return;
+        }
+
+
         if (GameLoop.Instance.PlayerState.Executing || !GameLoop.Instance.PlayerState.InState)
             return;
 
