@@ -70,6 +70,7 @@ public class PlayerUI : MonoBehaviour
         {
             inState = true;
             Deck.refillHand();
+
             for (int i = 0; i < MaxEnergy; i++)
             {
                 Energy[i].enabled = (i < CurrentEnergy);
@@ -173,7 +174,8 @@ public class PlayerUI : MonoBehaviour
         HoveredNode = null;
         pendingAction = null;
         CurrentEnergy -= SelectedCard.Cost;
-        for(int i = 0; i < MaxEnergy; i++)
+        EnergyParent.GetComponent<HorizontalLayoutGroup>().enabled = false;
+        for (int i = 0; i < MaxEnergy; i++)
         {
             Energy[i].enabled = (i < CurrentEnergy);
         }
