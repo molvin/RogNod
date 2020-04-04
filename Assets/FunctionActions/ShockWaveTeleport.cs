@@ -14,15 +14,13 @@ public class ShockWaveTeleport : FunctionAction
     {
         this.actor = actor;
         this.Origin = actor.Node;
-        Target = GameLoop.PlayerNode;
     }
     public override void AIDecision()
     {
-
+        Target = GameLoop.PlayerNode;
     }
     public override IEnumerator Act()
     {
-        Origin = actor.Node;
         List<Node> path = Graph.Instance.ShortestPath(Origin, Target);
         Debug.Log(path.Count);
 
