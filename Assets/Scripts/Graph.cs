@@ -12,6 +12,7 @@ public class Graph : MonoBehaviour
     public float MinDistance;
     public float MaxEdgeLength;
     public int NodeCount;
+    public float YTiltAmount;
     public LayerMask NodeLayer;
     public Node NodePrefab;
     public Edge EdgePrefab;
@@ -25,10 +26,12 @@ public class Graph : MonoBehaviour
     }
     private void Generate(int v)
     {
-        while(nodes.Count < v)
+        int escape = 100;
+        while(nodes.Count < v || escape < 0)
         {
+            escape--;
             //Random position
-            Vector2 position = Random.insideUnitCircle * SpawnRadius;
+            Vector2 position = new Vector2 ((Random.value-0.5f) * SpawnRadius * YTiltAmount, (Random.value - 0.5f) * SpawnRadius);
             //Check too close
             bool s = true;
             foreach (Node n in nodes)
@@ -89,7 +92,6 @@ public class Graph : MonoBehaviour
             if(Vector2.Distance(e.To.transform.position, e.From.transform.position) > MaxEdgeLength && e.To.Edges.Count > 1 && e.From.Edges.Count > 1)
             {
                 edges.RemoveAt(i);
-                //e.To.Edges.Remove(e);
                 e.From.Edges.Remove(e);
                 for (int j = e.To.Edges.Count - 1; j >= 0; j--)
                 {
