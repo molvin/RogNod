@@ -50,14 +50,14 @@ public class Swap : FunctionAction
 
             //stuns any entity of enemy type
             if (actor != e)
-            { 
+            {
                 e.Stunned = true;
             }
             Origin.RemoveOccupant(e);
         }
 
         List<Entity> TargetOccupantTest = Target.Occupants.GetRange(0, Target.Occupants.Count);
-        
+
         for (int i = Target.Occupants.Count - 1; i >= 0; i--)
         {
             Entity e = Target.Occupants[i];
@@ -70,12 +70,12 @@ public class Swap : FunctionAction
             Target.RemoveOccupant(e);
         }
 
-        foreach(Entity e in TargetOccupantTest)
+        foreach (Entity e in TargetOccupantTest)
         {
             Origin.AddOccupant(e);
         }
 
-        foreach(Entity e in OriginOccupantTest)
+        foreach (Entity e in OriginOccupantTest)
         {
             Target.AddOccupant(e);
         }
