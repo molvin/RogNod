@@ -5,6 +5,12 @@ using UnityEngine;
 [CreateAssetMenu()]
 public class Card : ScriptableObject
 {
+    public enum TargetType
+    {
+        Adjacent, Any, None
+    }
+    public TargetType Target;
+
 #pragma warning disable CS0649
     [SerializeField]
     private string Title;

@@ -5,17 +5,19 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "GameLoop/PlayerState")]
 public class PlayerState : GameLoopState
 {
+    public bool Executing = false;
     private FunctionAction action;
     public override IEnumerator Enter()
     {
         //Debug.Log("Waiting 3 seconds");
         //yield return new WaitForSeconds(3f);
         Debug.Log("Entered");
+        Executing = false;
         yield return null;
     }
     public override IEnumerator Run()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Executing)
         {
             yield return action.Act();
             action = null;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class PlayerUI : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class PlayerUI : MonoBehaviour
     public Card SelectedCard;
 
     private List<Button> hand = new List<Button>();
+    private FunctionAction pendingAction = null;
 
     private void Start()
     {
@@ -29,50 +31,76 @@ public class PlayerUI : MonoBehaviour
         HoveredNode = Graph.GetNodeUnderMouse();
         if(temp != HoveredNode)
         {
-            if (temp != null)
+            if (HoveredNode != null)
             {
                 //New hover
-                Debug.Log("New hover");
+                CreateAction();
             }
             else
                 Debug.Log("Lost hover");
         }
 
 
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0) && !GameLoop.Instance.PlayerState.Executing)
         {
             if (HoveredNode != null)
             {
-                CreateAction();            
+                PerformAction();
             }
             else
                 Debug.Log("Clicked nothing");
         }
     }
-    
+
     private void CreateAction()
     {
         if (SelectedCard == null)
+        {
+            pendingAction = null;
+            return;
+        }
+        //Check if target type resolves
+        bool valid = false;
+        if(SelectedCard.Target == Card.TargetType.Adjacent)
+        {
+            Node origin = GameLoop.Instance.Player.Node;
+            if (HoveredNode.Edges.Any(e => e.To == origin))
+                valid = true;
+        }
+        else if(SelectedCard.Target == Card.TargetType.Any)
+        {
+            valid = true;
+        }
+
+        if (!valid)
+        {
+            //TODO: visualize?
+            pendingAction = null;
+            return;
+        }
+
+        FunctionAction action = Instantiate(SelectedCard.getAction());
+        action.Origin = GameLoop.Instance.Player.Node;
+        action.Target = HoveredNode;
+        action.Initialize(GameLoop.Instance.Player);
+
+        //TODO: visualize
+
+        pendingAction = action;
+    }
+    
+    private void PerformAction()
+    {
+        if (SelectedCard == null || pendingAction == null)
         {
 
             return;
         }
 
-        FunctionAction action = SelectedCard.getAction();
-        action.Origin = GameLoop.Instance.Player.Node;
-        action.Target = HoveredNode;
-        action.Initialize(GameLoop.Instance.Player);
-        GameLoop.Instance.PlayerState.SetAction(action);
-    }
+        GameLoop.Instance.PlayerState.SetAction(pendingAction);
+        GameLoop.Instance.PlayerState.Executing = true;
 
-    private void CreateMoveAction()
-    {
-        //Move instance = Instantiate(MoveAction);
-        //instance.target = HoveredNode;
-        //instance.Initialize(GameLoop.Instance.Player);
-        //GameLoop.Instance.PlayerState.SetAction(instance);
     }
-    
     private void UpdateHand(List<Card> cards)
     {
         foreach(Button b in hand)
