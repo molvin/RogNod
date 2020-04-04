@@ -22,21 +22,44 @@ public class PlayerUI : MonoBehaviour
     public int CurrentEnergy;
     public int MaxEnergy = 3;
 
+    public Transform EnergyParent;
+    public Image EnergyPrefab;
+    private List<Image> Energy = new List<Image>();
+
     public Button EndTurnButton;
     private bool inState = true;
+    private bool won = false;
+    public Animator Anim;
 
     private void Start()
     {
         CurrentEnergy = MaxEnergy;
-        Deck.OnHandUpdate += UpdateHand;
         Deck.Initialize();
+        Deck.OnHandUpdate += UpdateHand;
         Deck.refillHand();
 
+
         EndTurnButton.onClick.AddListener(EndTurn);
+
+        for(int i = 0; i < MaxEnergy; i++)
+        {
+            Energy.Add(Instantiate(EnergyPrefab, EnergyParent));
+        }
     }
 
     private void Update()
     {
+        if(GameLoop.Instance.CurrentState is PickCardState)
+        {
+            if(!won)
+            {
+                won = true;
+                Anim.SetBool("PickCard", true);
+            }
+            return;
+        }
+
+
         if (GameLoop.Instance.PlayerState.Executing || !GameLoop.Instance.PlayerState.InState)
             return;
 
@@ -44,6 +67,10 @@ public class PlayerUI : MonoBehaviour
         {
             inState = true;
             Deck.refillHand();
+            for (int i = 0; i < MaxEnergy; i++)
+            {
+                Energy[i].enabled = (i < CurrentEnergy);
+            }
         }
 
         if (SelectedCard == null)
@@ -138,6 +165,10 @@ public class PlayerUI : MonoBehaviour
         HoveredNode = null;
         pendingAction = null;
         CurrentEnergy -= SelectedCard.Cost;
+        for(int i = 0; i < MaxEnergy; i++)
+        {
+            Energy[i].enabled = (i < CurrentEnergy);
+        }
         Deck.playCardFromHand(SelectedCard);
         SelectedCard = null;
     }
@@ -170,6 +201,7 @@ public class PlayerUI : MonoBehaviour
     private void EndTurn()
     {
         GameLoop.Instance.PlayerState.EndTurn = true;
+        GameLoop.Instance.PlayerState.InState = false;
         CurrentEnergy = MaxEnergy;
         inState = false;
     }
