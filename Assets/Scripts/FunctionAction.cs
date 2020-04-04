@@ -1,18 +1,12 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Action : MonoBehaviour
+public abstract class FunctionAction : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string Name;
+    public Image Icon;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public abstract IEnumerator Visualize(GameObject actor, Node origin, Node target);
+    public abstract IEnumerator Act(GameObject actor, Node origin, Node target);
 }
