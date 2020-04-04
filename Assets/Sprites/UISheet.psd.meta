@@ -14,6 +14,9 @@ TextureImporter:
   - first:
       213: 8537368232269895075
     second: Card_AttackIcon
+  - first:
+      213: -8888095454231964984
+    second: UISheet_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
