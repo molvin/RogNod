@@ -20,6 +20,7 @@ public class GameLoop : MonoBehaviour
 
     // Properties
     public PlayerState PlayerState => stateMachine.GetState<PlayerState>() as PlayerState;
+    public static Node PlayerNode => Instance.Player.Node;
 
     // Public Methods
     private void Awake()

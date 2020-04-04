@@ -11,6 +11,7 @@ public class Enemy : Entity
     {
         action = Instantiate(actionDeck[Random.Range(0, actionDeck.Count)]);
         action.Initialize(this);
+        action.AIDecision();
         return action;
     }
     public IEnumerator StubVisualize()

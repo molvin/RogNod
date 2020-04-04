@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu()]
@@ -18,7 +19,20 @@ public class Move : FunctionAction
     }
     public override void AIDecision()
     {
-        throw new System.NotImplementedException();
+        List<Node> adjacentNodes = origin.Edges.Select(e => e.To).ToList();
+        Node bestNode = adjacentNodes.First();
+        float bestDot = -1.0f;
+        foreach (Node node in adjacentNodes)
+        {
+            float dot = Vector3.Dot((node.transform.position - origin.transform.position).normalized, 
+                                    (GameLoop.PlayerNode.transform.position - origin.transform.position).normalized);
+            if (dot > bestDot)
+            {
+                bestDot = dot;
+                bestNode = node;
+            }
+        }
+        target = bestNode;
     }
     public override IEnumerator Act()
     {
