@@ -23,7 +23,9 @@ public class ShockWaveTeleport : FunctionAction
     public override IEnumerator Act()
     {
         Origin = actor.Node;
-        List<Node> path = Graph.Instance.ShortestPath(actor.Node, Target);
+        List<Node> path = Graph.Instance.ShortestPath(Origin, Target);
+        Debug.Log(path.Count);
+
         //damages everyone at current Node
         Origin.RemoveOccupant(actor);
         for(int d = Origin.Occupants.Count; d > 0; d--)
@@ -41,6 +43,7 @@ public class ShockWaveTeleport : FunctionAction
                 actor.transform.position = Vector3.Lerp(currentNode.transform.position, nextNode.transform.position, time / (actLerpTime / path.Count));
                 time += Time.deltaTime;
                 yield return null;
+                Debug.Log("Tjo");
             }
             //Iterates through nextNodes Occupants and damages
             for (int j = nextNode.Occupants.Count; j > 0; j++)
