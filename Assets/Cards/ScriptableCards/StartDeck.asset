@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc0b78b0409e0c34bbcaf5fb77d87902, type: 3}
   m_Name: StartDeck
   m_EditorClassIdentifier: 
-  _startingDeck: []
+  _startingDeck:
+  - {fileID: 11400000, guid: deced0fa5a32fe34294e96e5b8022926, type: 2}
   handSize: 3

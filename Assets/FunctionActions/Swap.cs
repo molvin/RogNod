@@ -5,20 +5,20 @@ using UnityEngine;
 //swaps position of actor and target entity
 [CreateAssetMenu()]
 public class Swap : FunctionAction
-{ 
+{
     public float actLerpTime;
-    public Entity targetSwapEntity;
-    public Node origin;
-    public Node target;
-    
+    public List<Entity> targetSwapEntity;
+
     // Start is called before the first frame update
     public override void Initialize(Entity actor)
     {
         this.actor = actor;
         //Set origin to actor's current Node
-        origin = actor.Node;
-        
-        target = targetSwapEntity.Node;
+        Origin = actor.Node;
+        Target = GameLoop.Instance.Player.Node;
+        targetSwapEntity = Target.Occupants;
+
+        Target = targetSwapEntity[0].Node;
         //set target to target node where swaptarget is positioned
 
     }
@@ -29,29 +29,70 @@ public class Swap : FunctionAction
     public override IEnumerator Act()
     {
         float time = 0;
-        origin.RemoveOccupant(actor);
-        target.RemoveOccupant(targetSwapEntity);
+        //save Entities on both target and originNodes
+        List<Entity> originEntitiesTemp = Origin.Occupants; 
+        List<Entity> targetEntitiesTemp = Target.Occupants;
+
+        //Remove them from the nodes
+        foreach(Entity e in Origin.Occupants)
+        {
+            Origin.RemoveOccupant(e);
+        }
+
+        foreach(Entity e in Target.Occupants)
+        {
+            Target.RemoveOccupant(e);
+        }
         while(time / actLerpTime <= 1f)
         {
-            actor.transform.position = Vector3.Lerp(origin.transform.position, target.transform.position, time / actLerpTime);
-            targetSwapEntity.transform.position = Vector3.Lerp(target.transform.position, origin.transform.position, time / actLerpTime);
+            //Move from origin to target
+            foreach(Entity e in originEntitiesTemp)
+            {
+                e.transform.position = Vector3.Lerp(Origin.transform.position, Target.transform.position, time / actLerpTime);
+            }
+            //move from target to origin
+            foreach (Entity e in targetEntitiesTemp)
+            {
+                e.transform.position = Vector3.Lerp(Target.transform.position, Origin.transform.position, time / actLerpTime);
+            }
             time += Time.deltaTime;
             yield return null;
         }
-        origin.AddOccupant(targetSwapEntity);
-        target.AddOccupant(actor);
+        foreach (Entity e in originEntitiesTemp)
+        {
+            Target.AddOccupant(e);
+        }
+        foreach (Entity e in targetEntitiesTemp)
+        {
+            Origin.AddOccupant(e);
+        }
     }
 
     public override IEnumerator Visualize()
     {
         float time = 0;
+
         while (time / actLerpTime <= 0.5f)
         {
-            actor.transform.position = Vector3.Lerp(origin.transform.position, target.transform.position, time / actLerpTime);
-            targetSwapEntity.transform.position = Vector3.Lerp(target.transform.position, origin.transform.position, time / actLerpTime);
+            foreach (Enemy e in Origin.Occupants)
+            { 
+                e.transform.position = Vector3.Lerp(Origin.transform.position, Target.transform.position, time / actLerpTime);
+            }
+            foreach (Enemy e in Target.Occupants)
+            {
+                e.transform.position = Vector3.Lerp(Target.transform.position, Origin.transform.position, time / actLerpTime);
+            }
             time += Time.deltaTime;
             yield return null;
         }
-        actor.transform.localPosition = Vector3.zero;
+        ResetVisualization();
+    }
+
+    public override void ResetVisualization()
+    {
+        foreach (Enemy e in Origin.Occupants)
+            e.transform.localPosition = Vector3.zero;
+        foreach (Enemy e in Target.Occupants)
+            e.transform.localPosition = Vector3.zero;
     }
 }

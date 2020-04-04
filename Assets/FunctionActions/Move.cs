@@ -8,6 +8,7 @@ public class Move : FunctionAction
 {
     public float ActLerpTime;
     public float VisualLerpTime;
+    public int EnemyMoveDamage;
 
     public override void Initialize(Entity actor)
     {
@@ -41,7 +42,16 @@ public class Move : FunctionAction
             time += Time.deltaTime;
             yield return null;
         }
+        DamagePlayer();
         Target.AddOccupant(actor);
+    }
+    private void DamagePlayer()
+    {
+        foreach (Entity entity in Target.Occupants)
+        {
+            if (entity is Player)
+                entity.Health -= EnemyMoveDamage;
+        }
     }
     public override IEnumerator Visualize()
     {
@@ -52,6 +62,11 @@ public class Move : FunctionAction
             time += Time.deltaTime;
             yield return null;
         }
+        actor.transform.localPosition = Vector3.zero;
+    }
+
+    public override void ResetVisualization()
+    {
         actor.transform.localPosition = Vector3.zero;
     }
 }

@@ -22,6 +22,8 @@ public class Deck : ScriptableObject
 
     public void Initialize()
     {
+        OnHandUpdate = null;
+        OnPlayDeckUpdate = null;
         _permanentDeck = new List<Card>(_startingDeck);
         _cardQueue = new Queue<Card>(_permanentDeck);
         hand = new List<Card>();
@@ -73,7 +75,7 @@ public class Deck : ScriptableObject
     public Card DrawCard()
     {
         OnPlayDeckUpdate?.Invoke(_cardQueue);
-        return _cardQueue.Dequeue();
+        return _cardQueue.Count == 0 ? null : _cardQueue.Dequeue();
     }
 
     public void refillHand()
@@ -103,11 +105,13 @@ public class Deck : ScriptableObject
 
     public void playCardFromHand(Card card)
     {
-        hand.Remove(card);
+        bool removed = hand.Remove(card);
+        Debug.Log(hand.Count);
+
         OnHandUpdate?.Invoke(hand);
     }
 
-    private void Shuffle()
+    public void Shuffle()
     {
         _cardQueue = new Queue<Card>(_cardQueue.OrderBy(x => Random.value));
     }

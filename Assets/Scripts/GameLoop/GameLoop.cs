@@ -19,6 +19,7 @@ public class GameLoop : MonoBehaviour
     private StateMachine stateMachine;
 
     // Properties
+    public State CurrentState => stateMachine.currentState;
     public PlayerState PlayerState => stateMachine.GetState<PlayerState>() as PlayerState;
     public static Node PlayerNode => Instance.Player.Node;
 

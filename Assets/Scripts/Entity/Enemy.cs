@@ -7,6 +7,18 @@ public class Enemy : Entity
     [SerializeField] private List<FunctionAction> actionDeck;
     [HideInInspector] public FunctionAction action;
 
+    public override int Health { get => health; set
+        {
+            health = value;
+            if (health <= 0)
+            {
+                Node.RemoveOccupant(this);
+                GameLoop.Instance.enemies.Remove(this);
+                Destroy(gameObject);
+            }
+        }
+    }
+
     public FunctionAction PickAction()
     {
         action = Instantiate(actionDeck[Random.Range(0, actionDeck.Count)]);

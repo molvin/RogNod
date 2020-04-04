@@ -21,6 +21,10 @@ public class DebugAction : FunctionAction
         Debug.Log("Initializing");
     }
 
+    public override void ResetVisualization()
+    {
+    }
+
     public override IEnumerator Visualize()
     {
         Debug.Log("Visualizing");

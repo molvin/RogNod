@@ -7,7 +7,7 @@ public class StateMachine
 {
     // Private Members
     private Dictionary<Type, State> stateDictionary = new Dictionary<Type, State>();
-    private State currentState;
+    public State currentState;
     private State queuedState;
 
     // Public Constructors

@@ -13,4 +13,5 @@ public abstract class FunctionAction : ScriptableObject
     public abstract void AIDecision();
     public abstract IEnumerator Visualize();
     public abstract IEnumerator Act();
+    public abstract void ResetVisualization();
 }

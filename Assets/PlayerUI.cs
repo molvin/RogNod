@@ -17,48 +17,97 @@ public class PlayerUI : MonoBehaviour
 
     private List<Button> hand = new List<Button>();
     private FunctionAction pendingAction = null;
+    private Coroutine VisualizeCoroutine;
+
+    public int CurrentEnergy;
+    public int MaxEnergy = 3;
+
+    public Transform EnergyParent;
+    public Image EnergyPrefab;
+    private List<Image> Energy = new List<Image>();
+
+    public Button EndTurnButton;
+    private bool inState = true;
+    private bool won = false;
+    public Animator Anim;
 
     private void Start()
     {
-        Deck.OnHandUpdate += UpdateHand;
-        Deck.Initialize();
+        Deck = Persistance.Instance.Deck;
+        CurrentEnergy = MaxEnergy;
+        Deck.OnHandUpdate = UpdateHand;    
         Deck.refillHand();
+
+
+        EndTurnButton.onClick.AddListener(EndTurn);
+
+        for(int i = 0; i < MaxEnergy; i++)
+        {
+            Energy.Add(Instantiate(EnergyPrefab, EnergyParent));
+        }
     }
 
     private void Update()
     {
-        Node temp = HoveredNode;
-        HoveredNode = Graph.GetNodeUnderMouse();
-        if(temp != HoveredNode)
+        if(GameLoop.Instance.CurrentState is PickCardState)
         {
-            if (HoveredNode != null)
+            if(!won)
             {
-                //New hover
-                CreateAction();
+                won = true;
+                Anim.SetBool("PickCard", true);
             }
-            else
-                Debug.Log("Lost hover");
+            return;
         }
 
 
-        if(Input.GetMouseButtonDown(0) && !GameLoop.Instance.PlayerState.Executing)
+        if (GameLoop.Instance.PlayerState.Executing || !GameLoop.Instance.PlayerState.InState)
+            return;
+
+        if(!inState)
         {
-            if (HoveredNode != null)
+            inState = true;
+            Deck.refillHand();
+            for (int i = 0; i < MaxEnergy; i++)
             {
-                PerformAction();
+                Energy[i].enabled = (i < CurrentEnergy);
             }
-            else
-                Debug.Log("Clicked nothing");
+        }
+
+        if (SelectedCard == null)
+            return;
+        if (SelectedCard.Cost > CurrentEnergy)
+        {
+            SelectedCard = null;
+            return;
+        }
+
+        Node temp = HoveredNode;
+        HoveredNode = Graph.GetNodeUnderMouse();
+
+        if(temp != HoveredNode)
+        {
+            if(HoveredNode != null)
+                CreateAction();
+            else if(pendingAction != null)
+            {
+                if (VisualizeCoroutine != null)
+                {
+                    StopCoroutine(VisualizeCoroutine);
+                    VisualizeCoroutine = null;
+                    pendingAction.ResetVisualization();
+                }
+                pendingAction = null;
+            }
+        }
+
+        if (Input.GetMouseButtonDown(0) && pendingAction != null)
+        {
+            PerformAction();
         }
     }
 
     private void CreateAction()
     {
-        if (SelectedCard == null)
-        {
-            pendingAction = null;
-            return;
-        }
         //Check if target type resolves
         bool valid = false;
         if(SelectedCard.Target == Card.TargetType.Adjacent)
@@ -75,6 +124,11 @@ public class PlayerUI : MonoBehaviour
         if (!valid)
         {
             //TODO: visualize?
+            if (VisualizeCoroutine != null)
+            {
+                StopCoroutine(VisualizeCoroutine);
+                pendingAction.ResetVisualization();
+            }
             pendingAction = null;
             return;
         }
@@ -86,7 +140,16 @@ public class PlayerUI : MonoBehaviour
 
         //TODO: visualize
 
+        if (VisualizeCoroutine != null)
+        {
+            StopCoroutine(VisualizeCoroutine);
+            pendingAction.ResetVisualization();
+        }
+
         pendingAction = action;
+
+
+        VisualizeCoroutine = StartCoroutine(Visualize());
     }
     
     private void PerformAction()
@@ -96,10 +159,18 @@ public class PlayerUI : MonoBehaviour
 
             return;
         }
-
+        pendingAction.ResetVisualization();
         GameLoop.Instance.PlayerState.SetAction(pendingAction);
         GameLoop.Instance.PlayerState.Executing = true;
-
+        HoveredNode = null;
+        pendingAction = null;
+        CurrentEnergy -= SelectedCard.Cost;
+        for(int i = 0; i < MaxEnergy; i++)
+        {
+            Energy[i].enabled = (i < CurrentEnergy);
+        }
+        Deck.playCardFromHand(SelectedCard);
+        SelectedCard = null;
     }
     private void UpdateHand(List<Card> cards)
     {
@@ -108,22 +179,37 @@ public class PlayerUI : MonoBehaviour
             Destroy(b.gameObject);
         }
         hand.Clear();
-
-        cards.Add(MoveCard);
-        cards.Reverse();
-        foreach(Card c in cards)
+        List<Card> cs = new List<Card>(cards);
+        cs.Add(MoveCard);
+        cs.Reverse();
+        foreach(Card c in cs)
         {
             Button newButton = Instantiate(ButtonPrefab, HandParent);
-            newButton.GetComponentInChildren<TextMeshProUGUI>().text = c.getTitle();
+            newButton.GetComponent<UICard>().Set(c);
             Card c1 = c;
             newButton.onClick.AddListener(() => SelectCard(c1));
             hand.Add(newButton);
         }
-        SelectCard(cards[0]);
     }
     private void SelectCard(Card c)
     {
+        if (CurrentEnergy < c.Cost)
+            return;
         SelectedCard = c;
+        pendingAction = null;
+    }
+    private void EndTurn()
+    {
+        GameLoop.Instance.PlayerState.EndTurn = true;
+        GameLoop.Instance.PlayerState.InState = false;
+        CurrentEnergy = MaxEnergy;
+        inState = false;
+    }
+
+    private IEnumerator Visualize()
+    {
+        yield return pendingAction.Visualize();
+        VisualizeCoroutine = null;
     }
 
     private void OnGUI()
