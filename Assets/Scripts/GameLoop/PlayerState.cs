@@ -28,10 +28,10 @@ public class PlayerState : GameLoopState
             Executing = false;
         }
 
-        if(EndTurn)
+        if (GameLoop.enemies.Count == 0)
+            stateMachine.ChangeState<PickCardState>();
+        else if (EndTurn)
             stateMachine.ChangeState<EnemyResolveState>();
-
-        yield return null;
     }
     public override IEnumerator Exit()
     {
