@@ -6,47 +6,87 @@ using UnityEngine;
 [CreateAssetMenu()]
 public class ShockWaveTeleport : FunctionAction
 {
-    public float Damage;
+    public int damage;
     public float actLerpTime;
-    public Node origin;
+    public int maxRange;
 
     public override void Initialize(Entity actor)
     {
-        throw new System.NotImplementedException();
+        this.actor = actor;
+        this.Origin = actor.Node;
+        Target = GameLoop.PlayerNode;
     }
     public override void AIDecision()
     {
-        throw new System.NotImplementedException();
+
     }
     public override IEnumerator Act()
     {
-        float time = 0;
-        Node nextNode; //next node that is travelled to
+        Origin = actor.Node;
+        List<Node> path = Graph.Instance.ShortestPath(actor.Node, Target);
+        //damages everyone at current Node
+        Origin.RemoveOccupant(actor);
+        for(int d = Origin.Occupants.Count; d > 0; d--)
+        {
+                Origin.Occupants[d].Health -= damage;
+        }
+
+        for (int i = 0; i < path.Count; i++) {
+            Node currentNode = i > 0 ? path[i - 1] : actor.Node;
+            Node nextNode = path[i];
+            float time = 0;
+          //lerps position to nextNode
+            while (time / (actLerpTime / path.Count)  <= 1f)
+            {
+                actor.transform.position = Vector3.Lerp(currentNode.transform.position, nextNode.transform.position, time / (actLerpTime / path.Count));
+                time += Time.deltaTime;
+                yield return null;
+            }
+            //Iterates through nextNodes Occupants and damages
+            for (int j = nextNode.Occupants.Count; j > 0; j++)
+            {
+                if(nextNode.Occupants[j] != actor)
+                {
+                    nextNode.Occupants[j].Health -= damage;
+                }
+            }
+        }
+        Target.AddOccupant(actor);
+
+        //next node that is travelled to
+
         //while true.
         //set nextNode to next Node in queue
         //Lerp to nextNode
         //Check if lerpAlpha >= 1;
         //if nextNode == target, break. else Damage any other entity on this tile, and return.
-        
 
-        yield return null;
+
+        
     }
     public override IEnumerator Visualize()
     {
-        float time = 0;
-        while (time / actLerpTime <= 1f)
+
+        List<Node> path = Graph.Instance.ShortestPath(actor.Node, Target);
+        for (int i = 0; i < path.Count; i++)
         {
-            actor.transform.position = Vector3.Lerp(origin.transform.position, Target.transform.position, time / actLerpTime);
-            actor.transform.position = Vector3.Lerp(origin.transform.position, Target.transform.position, time / actLerpTime);
-            time += Time.deltaTime;
-            yield return null;
+            Node currentNode = i > 0 ? path[i - 1] : actor.Node;
+            Node nextNode = path[i];
+            float time = 0;
+            //lerps position to nextNode
+            while (time / (actLerpTime / path.Count) <= 1f)
+            {
+                actor.transform.position = Vector3.Lerp(currentNode.transform.position, nextNode.transform.position, time / (actLerpTime / path.Count));
+                time += Time.deltaTime;
+                yield return null;
+            }
+            //Iterates through nextNodes Occupants and damages
+            ResetVisualization();
         }
-        ResetVisualization();
-        
     }
 
     public override void ResetVisualization()
     {
-        throw new System.NotImplementedException();
+        actor.transform.localPosition = Vector3.zero;
     }
 }
