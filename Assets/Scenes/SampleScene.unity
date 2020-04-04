@@ -249,7 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnRadius: 10
   MinDistance: 3
-  MaxEdgeLength: 8
+  MaxEdgeLength: 10
   NodeCount: 15
   NodePrefab: {fileID: 2513160526939959786, guid: 407541d044f869f43b69f98aba8405c3,
     type: 3}
