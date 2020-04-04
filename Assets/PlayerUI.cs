@@ -139,6 +139,7 @@ public class PlayerUI : MonoBehaviour
         pendingAction = null;
         CurrentEnergy -= SelectedCard.Cost;
         Deck.playCardFromHand(SelectedCard);
+        SelectedCard = null;
     }
     private void UpdateHand(List<Card> cards)
     {

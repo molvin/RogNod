@@ -16,7 +16,7 @@ public class Card : ScriptableObject
 #pragma warning disable CS0649
     [SerializeField]
     private string Title;
-    [SerializeField]
+    [SerializeField, Multiline]
     private string Description;
     [SerializeField]
     private FunctionAction Action; 
