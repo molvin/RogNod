@@ -246,9 +246,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a43e94e3b289ed4e8c5ee7bf255efa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnRadius: 7
+  SpawnRadius: 10
   MinDistance: 3
   NodeCount: 15
   NodePrefab: {fileID: 2513160526939959786, guid: 407541d044f869f43b69f98aba8405c3,
     type: 3}
-  EdgePrefab: {fileID: 0}
+  EdgePrefab: {fileID: 227755487175468537, guid: 6724cc10bcd613a418c3a03005f3a3a3,
+    type: 3}
