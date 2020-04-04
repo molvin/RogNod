@@ -33,6 +33,8 @@ public class PlayerUI : MonoBehaviour
 
     public TextMeshProUGUI Text;
 
+    private int index;
+
     private void Start()
     {
         Deck = Persistance.Instance.Deck;
@@ -195,16 +197,19 @@ public class PlayerUI : MonoBehaviour
             cs.Add(c);
         cs.Add(MoveCard);
         cs.Reverse();
+        int i = 0;
         foreach(Card c in cs)
         {
             Button newButton = Instantiate(ButtonPrefab, HandParent);
             newButton.GetComponent<UICard>().Set(c);
             Card c1 = c;
-            newButton.onClick.AddListener(() => SelectCard(c1));
+            int j = i;
+            newButton.onClick.AddListener(() => SelectCard(c1, j));
             hand.Add(newButton);
+            i++;
         }
     }
-    private void SelectCard(Card c)
+    private void SelectCard(Card c, int i)
     {
         if (CurrentEnergy < c.Cost)
         {
@@ -212,12 +217,13 @@ public class PlayerUI : MonoBehaviour
             Text.text = "";
             return;
         }
-        if(SelectedCard != null && SelectedCard.Target == Card.TargetType.None && c == SelectedCard)
+        if(SelectedCard != null && SelectedCard.Target == Card.TargetType.None && c == SelectedCard && i == index)
         {
             PerformAction();
             return;
         }
         SelectedCard = c;
+        index = i;
 
         switch (SelectedCard.Target)
         {
