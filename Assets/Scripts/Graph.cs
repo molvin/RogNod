@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Graph : MonoBehaviour
 {
     public float SpawnRadius;
     public float MinDistance;
+    public float MaxEdgeLength;
     public int NodeCount;
     public Node NodePrefab;
     public Edge EdgePrefab;
@@ -35,18 +37,22 @@ public class Graph : MonoBehaviour
             if (!s)
                 continue;
             //Create node
-            nodes.Add(Instantiate(NodePrefab, position, Quaternion.identity));                        
+            Node newNode = Instantiate(NodePrefab, position, Quaternion.identity);
+            newNode.name = $"Node {nodes.Count}";
+            nodes.Add(newNode);                        
         }
         foreach(Node node in nodes)
         {
             //Create connection to each node
-            foreach(Node n in nodes)
+            foreach (Node n in nodes)
             {
                 if (node == n)
                     continue;
                 bool fail = false;
                 foreach(Edge e in edges)
                 {
+                    if (e.To == n || e.From == n || e.To == node || e.From == n)
+                        continue;
                     //If vec overlaps e, dissallow
                     Vector2 intersect;
                     if(LineSegmentsIntersection(node.transform.position, n.transform.position, e.To.transform.position, e.From.transform.position, out intersect))
@@ -68,6 +74,22 @@ public class Graph : MonoBehaviour
                     n.Edges.Add(e);
                 }
             }
+        }
+        edges = edges.OrderBy(x => Random.value).ToList();
+        for(int i = edges.Count - 1; i >= 0; --i)
+        {
+            Edge e = edges[i];
+            //if edge is too long
+            if(Vector2.Distance(e.To.transform.position, e.From.transform.position) > MaxEdgeLength && e.To.Edges.Count > 1 && e.From.Edges.Count > 1)
+            {
+                Debug.Log("Removed based on length");
+                edges.RemoveAt(i);
+                e.To.Edges.Remove(e);
+                e.From.Edges.Remove(e);
+                Destroy(e.gameObject);
+                continue;
+            }
+
         }
     }
 
