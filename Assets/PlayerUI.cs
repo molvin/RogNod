@@ -33,9 +33,9 @@ public class PlayerUI : MonoBehaviour
 
     private void Start()
     {
+        Deck = Persistance.Instance.Deck;
         CurrentEnergy = MaxEnergy;
-        Deck.Initialize();
-        Deck.OnHandUpdate += UpdateHand;
+        Deck.OnHandUpdate = UpdateHand;    
         Deck.refillHand();
 
 

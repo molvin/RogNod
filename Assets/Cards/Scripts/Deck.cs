@@ -75,7 +75,7 @@ public class Deck : ScriptableObject
     public Card DrawCard()
     {
         OnPlayDeckUpdate?.Invoke(_cardQueue);
-        return _cardQueue.Dequeue();
+        return _cardQueue.Count == 0 ? null : _cardQueue.Dequeue();
     }
 
     public void refillHand()
@@ -111,7 +111,7 @@ public class Deck : ScriptableObject
         OnHandUpdate?.Invoke(hand);
     }
 
-    private void Shuffle()
+    public void Shuffle()
     {
         _cardQueue = new Queue<Card>(_cardQueue.OrderBy(x => Random.value));
     }
