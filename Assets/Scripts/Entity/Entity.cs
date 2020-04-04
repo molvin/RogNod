@@ -6,5 +6,6 @@ public abstract class Entity : MonoBehaviour
 {
     [SerializeField] protected int health;
     public abstract int Health { get; set; }
+    public bool Stunned { get; set; }
     public Node Node;
 }

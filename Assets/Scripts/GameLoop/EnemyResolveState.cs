@@ -9,7 +9,11 @@ public class EnemyResolveState : GameLoopState
     {
         foreach (Enemy enemy in GameLoop.enemies)
         {
-            yield return enemy.action.Act();
+            if (!enemy.Stunned)
+                yield return enemy.action.Act();
+            else
+                enemy.Stunned = false;
+
             if (GameLoop.Player.Health <= 0)
                 break;
         }

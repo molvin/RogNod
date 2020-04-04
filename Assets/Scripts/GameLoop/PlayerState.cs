@@ -23,7 +23,10 @@ public class PlayerState : GameLoopState
     {
         if (Executing)
         {
-            yield return action.Act();
+            if (!GameLoop.Player.Stunned)
+                yield return action.Act();
+            else
+                GameLoop.Player.Stunned = false;
             action = null;
             Executing = false;
         }
