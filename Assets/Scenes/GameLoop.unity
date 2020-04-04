@@ -162,6 +162,7 @@ GameObject:
   - component: {fileID: 78816807}
   - component: {fileID: 78816806}
   - component: {fileID: 78816805}
+  - component: {fileID: 78816808}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -204,7 +205,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 15
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -234,6 +235,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &78816808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78816804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fefe27c79dcee6c4898857f508de9c08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StickFactor: 100
 --- !u!1 &210107753
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,8 +454,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnRadius: 10
   MinDistance: 3
-  MaxEdgeLength: 10
+  MaxEdgeLength: 15
   NodeCount: 15
+  YTiltAmount: 3
   NodeLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -614,6 +629,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Deck: {fileID: 11400000, guid: 428c2a9ed8fcaa64789bceb4755225a6, type: 2}
   DrawDeck: {fileID: 11400000, guid: 2eb35da3da6a8fc488084f84107d0ba1, type: 2}
+  EnemyCountIncrease: 1
+  NodeCountIncrease: 1
+  Round: 0
 --- !u!4 &1029974318
 Transform:
   m_ObjectHideFlags: 0

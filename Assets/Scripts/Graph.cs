@@ -31,7 +31,7 @@ public class Graph : MonoBehaviour
         {
             escape--;
             //Random position
-            Vector2 position = new Vector2 (Random.value * SpawnRadius * YTiltAmount, Random.value * SpawnRadius);
+            Vector2 position = new Vector2 ((Random.value-0.5f) * SpawnRadius * YTiltAmount, (Random.value - 0.5f) * SpawnRadius);
             //Check too close
             bool s = true;
             foreach (Node n in nodes)
