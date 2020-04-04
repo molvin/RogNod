@@ -26,7 +26,7 @@ public class ShockWaveTeleport : FunctionAction
 
         //damages everyone at current Node
         Origin.RemoveOccupant(actor);
-        for(int d = Origin.Occupants.Count -1; d > 0; d--)
+        for(int d = Origin.Occupants.Count -1; d >= 0; d--)
         {
                 Origin.Occupants[d].Health -= damage;
         }
@@ -42,8 +42,9 @@ public class ShockWaveTeleport : FunctionAction
                 time += Time.deltaTime;
                 yield return null;
             }
+
             //Iterates through nextNodes Occupants and damages
-            for (int j = nextNode.Occupants.Count -1; j > 0; j--)
+            for (int j = nextNode.Occupants.Count -1; j >= 0; j--)
             {
                 if(nextNode.Occupants[j] != actor)
                 {
