@@ -15,13 +15,13 @@ public class Deck : ScriptableObject
     private Queue<Card> _cardQueue;
 
     private List<Card> hand;
-    private int handSize = 3;
+    public int handSize = 3;
+
+    public System.Action<List<Card>> OnHandUpdate;
+    public System.Action<Queue<Card>> OnPlayDeckUpdate;
 
     public void Initialize()
     {
-        hand = null;
-        _cardQueue = null;
-        _permanentDeck = null;
         _permanentDeck = new List<Card>(_startingDeck);
         _cardQueue = new Queue<Card>(_permanentDeck);
         hand = new List<Card>();
@@ -52,20 +52,27 @@ public class Deck : ScriptableObject
     public void ReinsertCard(Card card)
     {
         _cardQueue.Enqueue(card);
+        OnPlayDeckUpdate?.Invoke(_cardQueue);
     }
 
-    public Card[] DrawCards(int amount)
+    public List<Card> DrawCards(int amount)
     {
-        Card[] toReturn = new Card[amount];
+        List<Card> toReturn = new List<Card>();
         for (int i = 0; i < amount; i++)
         {
-            toReturn[i] = _cardQueue.Dequeue();
+            if(_cardQueue.Count == 0)
+                _cardQueue = new Queue<Card>(_permanentDeck);
+            if (_cardQueue.Count == 0)
+                break;
+            toReturn.Add(_cardQueue.Dequeue());
         }
+        OnPlayDeckUpdate?.Invoke(_cardQueue);
         return toReturn;
     }
 
     public Card DrawCard()
     {
+        OnPlayDeckUpdate?.Invoke(_cardQueue);
         return _cardQueue.Dequeue();
     }
 
@@ -74,17 +81,19 @@ public class Deck : ScriptableObject
         int missingCards = handSize - hand.Count;
         if (missingCards == 0)
             return;
-        Card[] newCards = DrawCards(missingCards);
+        addToHand(DrawCards(missingCards));
     }
 
     public void addToHand(Card card)
     {
         hand.Add(card);
+        OnHandUpdate?.Invoke(hand);
     }
 
-    public void addToHand(Card[] cards)
+    public void addToHand(List<Card> cards)
     {
         hand.AddRange(cards);
+        OnHandUpdate?.Invoke(hand);
     }
 
     public List<Card> getHand()
@@ -95,11 +104,12 @@ public class Deck : ScriptableObject
     public void playCardFromHand(Card card)
     {
         hand.Remove(card);
+        OnHandUpdate?.Invoke(hand);
     }
 
     private void Shuffle()
     {
-        _cardQueue.OrderBy(x => Random.value);
+        _cardQueue = new Queue<Card>(_cardQueue.OrderBy(x => Random.value));
     }
 
 }
