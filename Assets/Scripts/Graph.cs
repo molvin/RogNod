@@ -82,7 +82,6 @@ public class Graph : MonoBehaviour
             //if edge is too long
             if(Vector2.Distance(e.To.transform.position, e.From.transform.position) > MaxEdgeLength && e.To.Edges.Count > 1 && e.From.Edges.Count > 1)
             {
-                Debug.Log("Removed based on length");
                 edges.RemoveAt(i);
                 e.To.Edges.Remove(e);
                 e.From.Edges.Remove(e);
