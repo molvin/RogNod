@@ -18,4 +18,8 @@ public class Node : MonoBehaviour
         Occupants.Remove(obj);
         obj.transform.parent = null;
     }
+    public override string ToString()
+    {
+        return gameObject.name;
+    }
 }

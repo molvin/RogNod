@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : Entity
 {
     public FunctionAction action;
+    public Node Node;
 
     public FunctionAction PickAction()
     {

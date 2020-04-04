@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu()]
 public class Move : FunctionAction
 {
     public float ActLerpTime;
@@ -28,5 +29,6 @@ public class Move : FunctionAction
             time += Time.deltaTime;
             yield return null;
         }
+        actor.transform.localPosition = Vector3.zero;
     }
 }

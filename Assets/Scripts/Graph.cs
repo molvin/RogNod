@@ -1,21 +1,26 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Graph : MonoBehaviour
 {
+    public static Graph Instance;
     public float SpawnRadius;
     public float MinDistance;
     public float MaxEdgeLength;
     public int NodeCount;
+    public LayerMask NodeLayer;
     public Node NodePrefab;
     public Edge EdgePrefab;
     private List<Node> nodes = new List<Node>();
     private List<Edge> edges = new List<Edge>();
 
-    private void Start()
+    private void Awake()
     {
+        Instance = this;
         Generate(NodeCount);                
     }
     private void Generate(int v)
@@ -69,9 +74,10 @@ public class Graph : MonoBehaviour
                     Edge e = Instantiate(EdgePrefab, node.transform.position, Quaternion.identity);
                     e.From = node;
                     e.To = n;
+
                     edges.Add(e);
                     node.Edges.Add(e);
-                    n.Edges.Add(e);
+                    //n.Edges.Add(e);
                 }
             }
         }
@@ -83,13 +89,42 @@ public class Graph : MonoBehaviour
             if(Vector2.Distance(e.To.transform.position, e.From.transform.position) > MaxEdgeLength && e.To.Edges.Count > 1 && e.From.Edges.Count > 1)
             {
                 edges.RemoveAt(i);
-                e.To.Edges.Remove(e);
+                //e.To.Edges.Remove(e);
                 e.From.Edges.Remove(e);
+                for (int j = e.To.Edges.Count - 1; j >= 0; j--)
+                {
+                    Edge et = e.To.Edges[j];
+                    if (et.To == e.From && et.From == e.To)
+                    {
+                        e.To.Edges.RemoveAt(j);
+                        Destroy(et.gameObject);
+                        break;
+                    }                    
+                }
                 Destroy(e.gameObject);
                 continue;
             }
 
         }
+    }
+
+    public static Node GetUnoccupiedRandomNode()
+    {
+        List<Node> temp = Instance.nodes.OrderBy(x => Random.value).ToList();
+        foreach(Node n in temp)
+        {
+            if (n.Occupants.Count == 0)
+                return n;
+        }
+        return null;
+    }
+
+    public static Node GetNodeUnderMouse()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit, 100000.0f, Instance.NodeLayer))
+            return hit.collider.gameObject.GetComponent<Node>();
+        return null;
     }
 
     public static bool LineSegmentsIntersection(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, out Vector2 intersection)
