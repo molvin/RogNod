@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "GameLoop/EnemyDecideState")]
-public class EnemyDecideState : GameLoopState
+public class EnemyResolveState : GameLoopState
 {
     public override IEnumerator Enter()
     {
         foreach (Enemy enemy in GameLoop.enemies)
         {
-            FunctionAction action = enemy.PickAction();
-            yield return action.Visualize();
+            yield return enemy.action.Act();
         }
         stateMachine.ChangeState<PlayerState>();
     }

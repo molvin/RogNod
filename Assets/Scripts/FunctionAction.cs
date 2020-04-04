@@ -6,7 +6,9 @@ public abstract class FunctionAction : ScriptableObject
 {
     public string Name;
     public Image Icon;
+    protected Entity actor;
 
-    public abstract IEnumerator Visualize(GameObject actor, Node origin, Node target);
-    public abstract IEnumerator Act(GameObject actor, Node origin, Node target);
+    public abstract void Initialize(Entity actor);
+    public abstract IEnumerator Visualize();
+    public abstract IEnumerator Act();
 }
