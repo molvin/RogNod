@@ -45,9 +45,4 @@ public class GameLoop : MonoBehaviour
     {
         StartCoroutine(stateMachine.Start());
     }
-
-    public void GameOver()
-    {
-        Application.Quit();
-    }
 }

@@ -47,7 +47,7 @@ MonoBehaviour:
   health: 100
   Node: {fileID: 0}
   actionDeck:
-  - {fileID: 11400000, guid: fe8f2a38e6e455a4fac0e250c5317a2e, type: 2}
+  - {fileID: 11400000, guid: 0559d8af3830e224ebde4e4f6622e3fe, type: 2}
   - {fileID: 11400000, guid: 18d96d790777cf84ba86413426f2f517, type: 2}
   action: {fileID: 0}
 --- !u!212 &95062213357455104

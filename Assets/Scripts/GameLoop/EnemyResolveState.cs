@@ -10,7 +10,12 @@ public class EnemyResolveState : GameLoopState
         foreach (Enemy enemy in GameLoop.enemies)
         {
             yield return enemy.action.Act();
+            if (GameLoop.Player.Health <= 0)
+                break;
         }
-        stateMachine.ChangeState<EnemyDecideState>();
+        if (GameLoop.Player.Health <= 0)
+            stateMachine.ChangeState<RageQuitStage>();
+        else
+            stateMachine.ChangeState<EnemyDecideState>();
     }
 }

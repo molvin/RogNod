@@ -356,10 +356,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 097da5c392f3b6f41b07dc358ec1ce31, type: 2}
   - {fileID: 11400000, guid: cb9533f8bd38b5e4b88df9ab8366283f, type: 2}
   - {fileID: 11400000, guid: 627846c6623c2f04896098bb9ddab7b5, type: 2}
+  - {fileID: 11400000, guid: a0cf09f75c9fa584da83bcf9a01d1e7a, type: 2}
   enemies: []
   EnemyPrefabs:
   - {fileID: 7332095616415837461, guid: 73944c342baba76418fd60fc9a1c094e, type: 3}
-  - {fileID: 5070607357591349735, guid: 208c21422393cf84eb3e6637c810e39a, type: 3}
   EnemyCount: 2
   PlayerPrefab: {fileID: 6620469485349312785, guid: 3b11b8ae8f9858243b82eee19546041b,
     type: 3}
