@@ -16,20 +16,20 @@ public class Move : FunctionAction
     }
     public override void AIDecision()
     {
-        List<Node> adjacentNodes = origin.Edges.Select(e => e.To).ToList();
+        List<Node> adjacentNodes = Origin.Edges.Select(e => e.To).ToList();
         Node bestNode = adjacentNodes.First();
         float bestDot = -1.0f;
         foreach (Node node in adjacentNodes)
         {
-            float dot = Vector3.Dot((node.transform.position - origin.transform.position).normalized, 
-                                    (GameLoop.PlayerNode.transform.position - origin.transform.position).normalized);
+            float dot = Vector3.Dot((node.transform.position - Origin.transform.position).normalized, 
+                                    (GameLoop.PlayerNode.transform.position - Origin.transform.position).normalized);
             if (dot > bestDot)
             {
                 bestDot = dot;
                 bestNode = node;
             }
         }
-        target = bestNode;
+        Target = bestNode;
     }
     public override IEnumerator Act()
     {
