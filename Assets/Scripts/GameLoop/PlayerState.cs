@@ -18,6 +18,7 @@ public class PlayerState : GameLoopState
         if (Input.GetKeyDown(KeyCode.Space))
         {
             yield return action.Act();
+            action = null;
             stateMachine.ChangeState<EnemyResolveState>();
         }
         yield return null;
@@ -29,7 +30,8 @@ public class PlayerState : GameLoopState
     }
     public void SetAction(FunctionAction action)
     {
-        this.action = Instantiate(action);
-        this.action.Initialize(GameLoop.Player);
+        this.action = action;
+        //this.action = Instantiate(action);
+        //this.action.Initialize(GameLoop.Player);
     }
 }
