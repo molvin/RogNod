@@ -104,7 +104,6 @@ public class Graph : MonoBehaviour
                 Destroy(e.gameObject);
                 continue;
             }
-
         }
     }
 
@@ -152,5 +151,51 @@ public class Graph : MonoBehaviour
         return true;
     }
 
+    public List<Node> ShortestPath(Node start, Node target)
+    {
+        Dictionary<Node, float> distances = new Dictionary<Node, float>();
+        Dictionary<Node, Node> previous = new Dictionary<Node, Node>();
+        Queue<Node> queue = new Queue<Node>();
+        HashSet<Node> searched = new HashSet<Node>();
 
+        foreach (Node n in nodes)
+        {
+            distances.Add(n, float.PositiveInfinity);
+            previous.Add(n, null);
+        }
+
+        distances[start] = 0f;
+        queue.Enqueue(start);
+
+        while (queue.Count != 0)
+        {
+            Node current = queue.Dequeue();
+
+            foreach (Node node in current.Edges.Select(e => e.To))
+            {
+                float distance = Vector3.Distance(current.transform.position, node.transform.position);
+                float newDist = distances[current] + distance;
+                if (newDist < distances[node])
+                {
+                    distances[node] = newDist;
+                    previous[node] = current;
+                }
+                if (!queue.Contains(node) && !searched.Contains(node))
+                {
+                    queue.Enqueue(node);
+                }
+            }
+            searched.Add(current);
+        }
+
+        List<Node> path = new List<Node>();
+        Node curr = target;
+        while (curr != start)
+        {
+            path.Add(curr);
+            curr = previous[curr];
+        }
+        path.Reverse();
+        return path;
+    }
 }
