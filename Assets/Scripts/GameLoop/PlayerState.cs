@@ -16,7 +16,7 @@ public class PlayerState : GameLoopState
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            stateMachine.ChangeState<EnemyDecideState>();
+            stateMachine.ChangeState<EnemyResolveState>();
         }
     }
 }

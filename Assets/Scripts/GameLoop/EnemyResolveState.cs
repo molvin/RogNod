@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "GameLoop/EnemyDecideState")]
+[CreateAssetMenu(menuName = "GameLoop/EnemyResolveState")]
 public class EnemyResolveState : GameLoopState
 {
     public override IEnumerator Enter()
@@ -11,6 +11,6 @@ public class EnemyResolveState : GameLoopState
         {
             yield return enemy.action.Act();
         }
-        stateMachine.ChangeState<PlayerState>();
+        stateMachine.ChangeState<EnemyDecideState>();
     }
 }
