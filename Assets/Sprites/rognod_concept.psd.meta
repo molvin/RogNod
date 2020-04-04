@@ -1,9 +1,48 @@
 fileFormatVersion: 2
 guid: 51252fd7f2e36f44b91e9a84fb5b0fe0
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 4809639760874263086
+    second: rognod_concept_0
+  - first:
+      213: -5092377170886943752
+    second: rognod_concept_1
+  - first:
+      213: 6045861956144463205
+    second: rognod_concept_2
+  - first:
+      213: -3802767286388481799
+    second: rognod_concept_3
+  - first:
+      213: -361718470343399362
+    second: rognod_concept_4
+  - first:
+      213: -4155921400635668912
+    second: rognod_concept_5
+  - first:
+      213: 3740697999444091331
+    second: rognod_concept_6
+  - first:
+      213: 4868127274553374841
+    second: rognod_concept_7
+  - first:
+      213: 5080526699876707353
+    second: rognod_concept_8
+  - first:
+      213: 7877334579185936521
+    second: rognod_concept_9
+  - first:
+      213: 3362911121797679257
+    second: rognod_concept_10
+  - first:
+      213: -8015092152278614548
+    second: rognod_concept_11
+  - first:
+      213: -2345206432998957368
+    second: rognod_concept_12
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 10
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -40,7 +79,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -57,7 +96,6 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
-  applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -71,9 +109,294 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: rognod_concept_0
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 782
+        width: 444
+        height: 209
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e22518441e54fb240800000000000000
+      internalID: 4809639760874263086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rognod_concept_1
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 984
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fb99f291fd3459b0800000000000000
+      internalID: -5092377170886943752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rognod_concept_2
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 500
+        width: 511
+        height: 245
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56df901ba6737e350800000000000000
+      internalID: 6045861956144463205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rognod_concept_3
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 736
+        width: 6
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f0a65b0d4bd93bc0800000000000000
+      internalID: -3802767286388481799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rognod_concept_4
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 738
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e38eb7ab7faeafaf0800000000000000
+      internalID: -361718470343399362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rognod_concept_5
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 733
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 056caa051833356c0800000000000000
+      internalID: -4155921400635668912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rognod_concept_6
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 254
+        width: 511
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c121ece201a9e330800000000000000
+      internalID: 3740697999444091331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rognod_concept_7
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 469
+        width: 6
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 978f429b6ff0f8340800000000000000
+      internalID: 4868127274553374841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rognod_concept_8
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 471
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91ce902ad18a18640800000000000000
+      internalID: 5080526699876707353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rognod_concept_9
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 466
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9886749501ae15d60800000000000000
+      internalID: 7877334579185936521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rognod_concept_10
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 257
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99806f909d57bae20800000000000000
+      internalID: 3362911121797679257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rognod_concept_11
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 31
+        width: 444
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ced796d372ca4c090800000000000000
+      internalID: -8015092152278614548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rognod_concept_12
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 29
+        width: 115
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ced224bc27247fd0800000000000000
+      internalID: -2345206432998957368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -86,7 +409,7 @@ TextureImporter:
     secondaryTextures: []
   spritePackingTag: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
+  pSDShowRemoveMatteOption: 1
   userData: 
   assetBundleName: 
   assetBundleVariant: 
