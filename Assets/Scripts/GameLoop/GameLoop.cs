@@ -11,6 +11,9 @@ public class GameLoop : MonoBehaviour
 
     public int EnemyCount;
 
+    public Player PlayerPrefab;
+    public Player Player;
+
     // Private Members
     private StateMachine stateMachine;
 
@@ -27,6 +30,10 @@ public class GameLoop : MonoBehaviour
             node.AddOccupant(instance);
             enemies.Add(instance);
         }
+
+        Player = Instantiate(PlayerPrefab);
+        Node n = Graph.GetUnoccupiedRandomNode();
+        n.AddOccupant(Player);
     }
     private void Start()
     {
