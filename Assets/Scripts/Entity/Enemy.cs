@@ -6,7 +6,6 @@ public class Enemy : Entity
 {
     [SerializeField] private FunctionAction actionAsset;
     [HideInInspector] public FunctionAction action;
-    public Node Node;
 
     public FunctionAction PickAction()
     {

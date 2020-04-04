@@ -24,14 +24,14 @@ public class Move : FunctionAction
     public override IEnumerator Act()
     {
         float time = 0;
-        origin.RemoveOccupant(actor.gameObject);
+        origin.RemoveOccupant(actor);
         while (time / VisualLerpTime <= 1f)
         {
             actor.transform.position = Vector3.Lerp(origin.transform.position, target.transform.position, time / VisualLerpTime);
             time += Time.deltaTime;
             yield return null;
         }
-        target.AddOccupant(actor.gameObject);
+        target.AddOccupant(actor);
     }
     public override IEnumerator Visualize()
     {

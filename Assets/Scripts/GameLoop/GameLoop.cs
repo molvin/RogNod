@@ -24,8 +24,7 @@ public class GameLoop : MonoBehaviour
             Enemy prefab = EnemyPrefabs[Random.Range(0, EnemyPrefabs.Count)];
             Enemy instance = Instantiate(prefab);
             Node node = Graph.GetUnoccupiedRandomNode();
-            node.AddOccupant(instance.gameObject);
-            instance.Node = node;
+            node.AddOccupant(instance);
             enemies.Add(instance);
         }
     }
