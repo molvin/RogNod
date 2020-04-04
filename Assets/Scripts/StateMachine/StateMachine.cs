@@ -44,4 +44,8 @@ public class StateMachine
     {
         queuedState = stateDictionary[typeof(T)];
     }
+    public State GetState<T>() where T : State
+    {
+        return stateDictionary[typeof(T)];
+    }
 }

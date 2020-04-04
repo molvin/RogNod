@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "GameLoop/PlayerState")]
 public class PlayerState : GameLoopState
 {
+    private FunctionAction action;
     public override IEnumerator Enter()
     {
         //Debug.Log("Waiting 3 seconds");
@@ -18,5 +19,14 @@ public class PlayerState : GameLoopState
         {
             stateMachine.ChangeState<EnemyResolveState>();
         }
+    }
+    public override IEnumerator Exit()
+    {
+        yield return action.Act();
+    }
+    public void SetAction(FunctionAction action)
+    {
+        this.action = Instantiate(action);
+        this.action.Initialize(GameLoop.Player);
     }
 }

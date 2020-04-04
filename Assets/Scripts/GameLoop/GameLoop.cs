@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameLoop : MonoBehaviour
 {
+    public static GameLoop Instance;
     // Public Members
     public State[] states;
     public List<Enemy> enemies;
@@ -17,9 +18,13 @@ public class GameLoop : MonoBehaviour
     // Private Members
     private StateMachine stateMachine;
 
+    // Properties
+    public PlayerState PlayerState => stateMachine.GetState<PlayerState>() as PlayerState;
+
     // Public Methods
     private void Awake()
     {
+        Instance = this;
         stateMachine = new StateMachine(this, states);
         
         for(int i = 0; i < EnemyCount; i++)
