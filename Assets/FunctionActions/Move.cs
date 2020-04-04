@@ -14,11 +14,10 @@ public class Move : FunctionAction
     public override void Initialize(Entity actor)
     {
         this.actor = actor;
-        Enemy enemy = (Enemy)actor;
 
-        Edge e = enemy.Node.Edges[Random.Range(0, enemy.Node.Edges.Count)];
+        Edge e = actor.Node.Edges[Random.Range(0, actor.Node.Edges.Count)];
         Node target = e.To;
-        this.origin = enemy.Node;
+        this.origin = actor.Node;
         this.target = target;
     }
     public override IEnumerator Act()
