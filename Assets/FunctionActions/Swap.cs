@@ -54,4 +54,9 @@ public class Swap : FunctionAction
         }
         actor.transform.localPosition = Vector3.zero;
     }
+
+    public override void ResetVisualization()
+    {
+        throw new System.NotImplementedException();
+    }
 }

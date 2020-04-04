@@ -46,4 +46,8 @@ public class ShockWaveTeleport : FunctionAction
         
     }
 
+    public override void ResetVisualization()
+    {
+        throw new System.NotImplementedException();
+    }
 }

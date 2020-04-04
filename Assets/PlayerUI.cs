@@ -34,11 +34,25 @@ public class PlayerUI : MonoBehaviour
         Node temp = HoveredNode;
         HoveredNode = Graph.GetNodeUnderMouse();
 
-        if(temp != HoveredNode && HoveredNode != null)
-            CreateAction();
-        
+        if(temp != HoveredNode)
+        {
+            if(HoveredNode != null)
+                CreateAction();
+            else if(pendingAction != null)
+            {
+                if (VisualizeCoroutine != null)
+                {
+                    StopCoroutine(VisualizeCoroutine);
+                    VisualizeCoroutine = null;
+                    pendingAction.ResetVisualization();
+                }
+                pendingAction = null;
+            }
 
-        if(Input.GetMouseButtonDown(0) && pendingAction != null)
+        }
+
+
+        if (Input.GetMouseButtonDown(0) && pendingAction != null)
         {
             PerformAction();
         }
@@ -62,6 +76,11 @@ public class PlayerUI : MonoBehaviour
         if (!valid)
         {
             //TODO: visualize?
+            if (VisualizeCoroutine != null)
+            {
+                StopCoroutine(VisualizeCoroutine);
+                pendingAction.ResetVisualization();
+            }
             pendingAction = null;
             return;
         }
@@ -72,12 +91,15 @@ public class PlayerUI : MonoBehaviour
         action.Initialize(GameLoop.Instance.Player);
 
         //TODO: visualize
-        pendingAction = action;
 
         if (VisualizeCoroutine != null)
         {
             StopCoroutine(VisualizeCoroutine);
+            pendingAction.ResetVisualization();
         }
+
+        pendingAction = action;
+
 
         VisualizeCoroutine = StartCoroutine(Visualize());
     }
@@ -89,7 +111,7 @@ public class PlayerUI : MonoBehaviour
 
             return;
         }
-
+        pendingAction.ResetVisualization();
         GameLoop.Instance.PlayerState.SetAction(pendingAction);
         GameLoop.Instance.PlayerState.Executing = true;
         HoveredNode = null;

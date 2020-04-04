@@ -54,4 +54,9 @@ public class Move : FunctionAction
         }
         actor.transform.localPosition = Vector3.zero;
     }
+
+    public override void ResetVisualization()
+    {
+        actor.transform.localPosition = Vector3.zero;
+    }
 }
