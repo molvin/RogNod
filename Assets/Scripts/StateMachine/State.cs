@@ -2,17 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class State : MonoBehaviour
+public abstract class State : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
+    // Protected Members
+    protected StateMachine stateMachine;
+    protected object owner;
+
+    // Public Methods
+    public void Initialize(object owner, StateMachine stateMachine)
     {
-        
+        this.owner = owner;
+        this.stateMachine = stateMachine;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    // Public Virtual Methods
+    public virtual IEnumerator Enter() { yield return null; }
+    public virtual void Run() { }
+    public virtual IEnumerator Exit() { yield return null; }
 }
