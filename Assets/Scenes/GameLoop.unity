@@ -390,6 +390,7 @@ MonoBehaviour:
   enemies: []
   EnemyPrefabs:
   - {fileID: 7332095616415837461, guid: 73944c342baba76418fd60fc9a1c094e, type: 3}
+  - {fileID: 5070607357591349735, guid: 4a033e8fcc8c5134b81cd83a65a42ca5, type: 3}
   EnemyCount: 2
   PlayerPrefab: {fileID: 6620469485349312785, guid: 3b11b8ae8f9858243b82eee19546041b,
     type: 3}

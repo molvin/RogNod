@@ -43,6 +43,7 @@ public class PickCard : MonoBehaviour
     }
     private void NextLevel()
     {
+        Persistance.Instance.Round++;
         SceneManager.LoadScene(1);
     }
 }

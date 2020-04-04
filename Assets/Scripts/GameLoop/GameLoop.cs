@@ -29,7 +29,7 @@ public class GameLoop : MonoBehaviour
         Instance = this;
         stateMachine = new StateMachine(this, states);
         
-        for(int i = 0; i < EnemyCount; i++)
+        for(int i = 0; i < EnemyCount + Persistance.Instance.EnemyCountIncrease * Persistance.Instance.Round; i++)
         {
             Enemy prefab = EnemyPrefabs[Random.Range(0, EnemyPrefabs.Count)];
             Enemy instance = Instantiate(prefab);

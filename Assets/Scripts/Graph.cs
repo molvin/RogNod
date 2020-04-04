@@ -22,7 +22,7 @@ public class Graph : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        Generate(NodeCount);                
+        Generate(NodeCount + Persistance.Instance.NodeCountIncrease * Persistance.Instance.Round);                
     }
     private void Generate(int v)
     {
