@@ -61,6 +61,10 @@ public class Move : FunctionAction
             Destroy(visualization);
 
         visualization = Instantiate(actor.gameObject);
+        SpriteRenderer renderer = visualization.GetComponentInChildren<SpriteRenderer>();
+        Color c = renderer.color;
+        c.a = 0.65f;
+        renderer.color = c;
 
         float time = 0;
         while(time / VisualLerpTime <= 1f)
