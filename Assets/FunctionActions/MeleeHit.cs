@@ -8,18 +8,20 @@ public class MeleeHit : FunctionAction
     // Start is called before the first frame update
     public override IEnumerator Act()
     {
-        Debug.Log("Play ParticleEffect");
         for (int i = Target.Occupants.Count - 1; i >= 0; i--)
         
         {
             Entity e = Target.Occupants[i];
-            Debug.Log("MeleeDamaging enemy: " + e.name);
             e.Health -= damage;
         }
 
         yield return null;
     }
-
+    public override void Initialize(Entity actor)
+    {
+        base.Initialize(actor);
+        Origin = actor.Node;
+    }
 
     public override void AIDecision()
     {

@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55ff4ddc7c389c8468e2606a73522de0, type: 3}
-  m_Name: MeleeHitAction
+  m_Script: {fileID: 11500000, guid: 6888204fca626634d807cb179f1472bc, type: 3}
+  m_Name: FastMoveCard
   m_EditorClassIdentifier: 
-  Name: 
-  Icon: {fileID: 0}
-  Origin: {fileID: 0}
-  Target: {fileID: 0}
-  damage: 50
+  Target: 0
+  Cost: 1
+  Title: Move
+  Description: Move one node
+  Action: {fileID: 11400000, guid: 18d96d790777cf84ba86413426f2f517, type: 2}
+  sprite: {fileID: 0}

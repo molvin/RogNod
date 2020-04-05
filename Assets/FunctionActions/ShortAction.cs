@@ -51,15 +51,22 @@ public class ShortAction : FunctionAction
     public override void ResetVisualization()
     {
         //reset particleEffect
-        Target.DemarkTile(Node.Marker.Red);
+        if (actor is Enemy)
+            Target.DemarkTile(Node.Marker.Red);
+        else
+            Target.DemarkTile(Node.Marker.Yellow);
         /*  if (visualization != null)
             Destroy(visualization);
     */
-        }
+    }
     //private GameObject visualization;
     public override IEnumerator Visualize()
     {
-        Target.MarkTile(Node.Marker.Red);/*
+        if (actor is Enemy)
+            Target.MarkTile(Node.Marker.Red);
+        else
+            Target.MarkTile(Node.Marker.Yellow);
+        /*
         visualization = GameObject.CreatePrimitive(PrimitiveType.Cube);
         visualization.transform.position = Target.transform.position;*/
         yield return null;

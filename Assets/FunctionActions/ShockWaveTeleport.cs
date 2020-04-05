@@ -56,9 +56,13 @@ public class ShockWaveTeleport : FunctionAction
             //Iterates through nextNodes Occupants and damages
             for (int j = nextNode.Occupants.Count -1; j >= 0; j--)
             {
+                bool playedAudio = false;
                 if(nextNode.Occupants[j] != actor)
                 {
                     nextNode.Occupants[j].Health -= damage;
+                    if(!playedAudio)
+                        GameLoop.Instance.audioSource.PlayOneShot(audioClip);
+                    playedAudio = true;
                 }
             }
         }
@@ -76,7 +80,10 @@ public class ShockWaveTeleport : FunctionAction
         List<Node> path = Graph.Instance.ShortestPath(actor.Node, Target);
         foreach (Node n in path)
         {
-            n.MarkTile(Node.Marker.Red);
+            if (actor is Enemy)
+                n.MarkTile(Node.Marker.Red);
+            else
+                n.MarkTile(Node.Marker.Yellow);
         }
 
         visualizeChar = Instantiate(actor.gameObject);
@@ -109,7 +116,10 @@ public class ShockWaveTeleport : FunctionAction
         }
         foreach (Node n in Graph.Instance.ShortestPath(actor.Node, Target))
         {
-            n.DemarkTile(Node.Marker.Red);
+            if (actor is Enemy)
+                n.DemarkTile(Node.Marker.Red);
+            else
+                n.DemarkTile(Node.Marker.Yellow);
         }
         actor.transform.localPosition = Vector3.zero;
     }

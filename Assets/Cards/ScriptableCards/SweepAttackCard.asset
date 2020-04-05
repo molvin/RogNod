@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6888204fca626634d807cb179f1472bc, type: 3}
   m_Name: SweepAttackCard
   m_EditorClassIdentifier: 
-  Target: 0
-  Cost: 0
-  Title: 
-  Description: 
-  Action: {fileID: 0}
+  Target: 2
+  Cost: 1
+  Title: Sweep Attack
+  Description: Attacks all adjacent tiles for a small amount of damage
+  Action: {fileID: 11400000, guid: bb0925b00f2843540b805dc5c4607f98, type: 2}
   sprite: {fileID: 0}
