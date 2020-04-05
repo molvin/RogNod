@@ -9,6 +9,7 @@ public class CameraMove : MonoBehaviour
     float sensitivity = 2f;
 
     public float StickFactor;
+    private Vector2 grabPos;
     void Update()
     {
         Vector2 pos = new Vector2(Input.mousePosition.x - Screen.width / 2, Input.mousePosition.y - Screen.height / 2) / StickFactor;

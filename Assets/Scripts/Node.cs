@@ -13,12 +13,11 @@ public class Node : MonoBehaviour
     public Sprite RedTile;
     public Sprite YellowTile;
     public Sprite BlueTile;
-    public float OccupantHeight;
 
     public void AddOccupant(Entity obj)
     {
         obj.transform.parent = transform;
-        obj.transform.localPosition = new Vector3(0, OccupantHeight, 0);
+        obj.transform.localPosition = Vector3.zero;
         Occupants.Add(obj);
         obj.Node = this;
     }
