@@ -167,6 +167,28 @@ public class Graph : MonoBehaviour
             }
         }
         Debug.Log("Removed " + count + " edges");
+
+        HashSet<Node> visited = new HashSet<Node>();
+        HashSet<Node> open = new HashSet<Node>();
+        open.Add(nodes[0]);
+        while(open.Count > 0)
+        {
+            Node node = open.First();
+            open.Remove(node);
+
+            visited.Add(node);
+
+            foreach(Edge e in node.Edges)
+            {
+                if(!visited.Contains(e.To))
+                    open.Add(e.To);    
+            }
+        }
+        if(visited.Count != nodes.Count)
+        {
+            Debug.Log("Broken");
+            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+        }
     }
 
     public static Node GetUnoccupiedRandomNode()

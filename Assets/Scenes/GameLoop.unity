@@ -353,6 +353,8 @@ MonoBehaviour:
     type: 3}
   EdgePrefab: {fileID: 227755487175468537, guid: 6724cc10bcd613a418c3a03005f3a3a3,
     type: 3}
+  CountForRandomRemove: 3
+  RemoveChance: 1
 --- !u!4 &332655362
 Transform:
   m_ObjectHideFlags: 0
