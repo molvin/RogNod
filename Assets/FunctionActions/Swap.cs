@@ -107,11 +107,14 @@ public class Swap : FunctionAction
 
     public override void ResetVisualization()
     {
+        Origin.DemarkTile(Node.Marker.Blue);
+
         foreach (Entity e in Origin.Occupants)
         {
             Origin.DemarkTile(Node.Marker.Blue);
             e.transform.localPosition = Vector3.zero;
         }
+        Target.DemarkTile(Node.Marker.Blue);
 
         foreach (Entity e in Target.Occupants)
         {

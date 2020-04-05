@@ -53,6 +53,10 @@ MonoBehaviour:
   enemies: []
   EnemyPrefabs:
   - {fileID: 7332095616415837461, guid: 73944c342baba76418fd60fc9a1c094e, type: 3}
+  - {fileID: 5070607357591349735, guid: 4a033e8fcc8c5134b81cd83a65a42ca5, type: 3}
+  - {fileID: 4225285878047775348, guid: d417e3bda13d5c6449aaff3a1e0defe9, type: 3}
+  - {fileID: 6218509024691792157, guid: 5c8f4dac46edfff4398c39fd39a7b964, type: 3}
+  audioSource: {fileID: 0}
   EnemyCount: 2
   PlayerPrefab: {fileID: 6620469485349312785, guid: 3b11b8ae8f9858243b82eee19546041b,
     type: 3}

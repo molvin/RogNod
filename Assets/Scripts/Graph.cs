@@ -210,6 +210,11 @@ public class Graph : MonoBehaviour
         return null;
     }
 
+    public static Node GetRandomNode()
+    {
+        return Instance.nodes[Random.Range(0, Instance.nodes.Count)];
+    }
+
     public static bool LineSegmentsIntersection(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, out Vector2 intersection)
     {
         intersection = Vector2.zero;
