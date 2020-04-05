@@ -5,7 +5,8 @@ using TMPro;
 
 public class Enemy : Entity
 {
-    [SerializeField] private List<FunctionAction> actionDeck;
+    [SerializeField] private List<Card> actionDeck;
+    [HideInInspector] public Card card;
     [HideInInspector] public FunctionAction action;
     public TextMeshProUGUI HpText;
 
@@ -24,7 +25,8 @@ public class Enemy : Entity
 
     public FunctionAction PickAction()
     {
-        action = Instantiate(actionDeck[Random.Range(0, actionDeck.Count)]);
+        card = actionDeck[Random.Range(0, actionDeck.Count)];
+        action = Instantiate(card.getAction());
         action.Initialize(this);
         action.AIDecision();
         return action;

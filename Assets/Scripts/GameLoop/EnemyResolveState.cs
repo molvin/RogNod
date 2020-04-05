@@ -7,8 +7,14 @@ public class EnemyResolveState : GameLoopState
 {
     public override IEnumerator Enter()
     {
-        foreach (Enemy enemy in GameLoop.enemies)
+        GameLoop.RoundText.text = "Enemies Executing";
+        yield return new WaitForSeconds(0.5f);
+
+        List<Enemy> enemies = GameLoop.enemies.GetRange(0, GameLoop.enemies.Count);
+        foreach (Enemy enemy in enemies)
         {
+            if (!GameLoop.enemies.Contains(enemy))
+                continue;
             if (!enemy.Stunned)
                 yield return enemy.action.Act();
             else

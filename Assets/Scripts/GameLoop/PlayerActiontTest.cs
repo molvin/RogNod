@@ -19,4 +19,9 @@ public class PlayerActiontTest : MonoBehaviour
             Debug.Log(p.name);
         }
     }
+
+    public void Stun()
+    {
+        target.Occupants.ForEach(o => o.Stunned = true);
+    }
 }

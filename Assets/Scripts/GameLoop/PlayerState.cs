@@ -11,8 +11,9 @@ public class PlayerState : GameLoopState
     private FunctionAction action;
     public override IEnumerator Enter()
     {
-        //Debug.Log("Waiting 3 seconds");
-        //yield return new WaitForSeconds(3f);
+        GameLoop.RoundText.text = "Player Turn";
+        yield return new WaitForSeconds(0.5f);
+
         Debug.Log("Entered");
         Executing = false;
         EndTurn = false;

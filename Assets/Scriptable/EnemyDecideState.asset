@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e867fdec05b1ecd4595f173585410e23, type: 3}
   m_Name: EnemyDecideState
   m_EditorClassIdentifier: 
+  CardUIPrefab: {fileID: 1220744641725091657, guid: 911573c0a7d4a1844b8f38a1bca46025,
+    type: 3}

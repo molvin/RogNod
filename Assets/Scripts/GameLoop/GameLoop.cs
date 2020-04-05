@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameLoop : MonoBehaviour
@@ -14,6 +15,9 @@ public class GameLoop : MonoBehaviour
 
     public Player PlayerPrefab;
     public Player Player;
+
+    public GameObject DisplayCard;
+    public TextMeshProUGUI RoundText;
 
     // Private Members
     private StateMachine stateMachine;
