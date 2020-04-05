@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
+using UnityEngine.UI;
 //Targets any Unoccupied Node.
 [CreateAssetMenu()]
 public class ShockWaveTeleport : FunctionAction
