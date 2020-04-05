@@ -19,6 +19,9 @@ public class Graph : MonoBehaviour
     private List<Node> nodes = new List<Node>();
     private List<Edge> edges = new List<Edge>();
 
+    public int CountForRandomRemove;
+    public float RemoveChance;
+
     public List<Node> Nodes => nodes.GetRange(0, nodes.Count);
 
     private void Awake()
@@ -59,10 +62,20 @@ public class Graph : MonoBehaviour
                 if (node == n)
                     continue;
                 bool fail = false;
+
+                RaycastHit[] hits = Physics.RaycastAll(node.transform.position, (n.transform.position - node.transform.position).normalized, (n.transform.position - node.transform.position).magnitude, NodeLayer);
+                foreach(RaycastHit h in hits)
+                {
+                    if (h.collider.gameObject != n.gameObject && h.collider.gameObject != node.gameObject)
+                        fail = true;
+                }
+
                 foreach(Edge e in edges)
                 {
                     if (e.To == n || e.From == n || e.To == node || e.From == n)
                         continue;
+
+
                     //If vec overlaps e, dissallow
                     Vector2 intersect;
                     if(LineSegmentsIntersection(node.transform.position, n.transform.position, e.To.transform.position, e.From.transform.position, out intersect))
@@ -87,12 +100,15 @@ public class Graph : MonoBehaviour
             }
         }
         edges = edges.OrderBy(x => Random.value).ToList();
+        List<Edge> to_ignore = new List<Edge>();
         for(int i = edges.Count - 1; i >= 0; --i)
         {
             Edge e = edges[i];
             //if edge is too long
             if(Vector2.Distance(e.To.transform.position, e.From.transform.position) > MaxEdgeLength && e.To.Edges.Count > 1 && e.From.Edges.Count > 1)
             {
+                to_ignore.Add(e);
+
                 edges.RemoveAt(i);
                 e.From.Edges.Remove(e);
                 for (int j = e.To.Edges.Count - 1; j >= 0; j--)
@@ -100,7 +116,12 @@ public class Graph : MonoBehaviour
                     Edge et = e.To.Edges[j];
                     if (et.To == e.From && et.From == e.To)
                     {
+                        Edge e1 = e.To.Edges[j];
+
                         e.To.Edges.RemoveAt(j);
+                        //edges.Remove(e1);
+                        to_ignore.Add(e1);
+
                         Destroy(et.gameObject);
                         break;
                     }                    
@@ -109,6 +130,43 @@ public class Graph : MonoBehaviour
                 continue;
             }
         }
+        foreach (Edge e in to_ignore)
+            edges.Remove(e);
+
+        int count = 0;
+        foreach(Node n in nodes)
+        {
+            if((n.Edges.Count) > CountForRandomRemove)
+            {
+                for(int i = n.Edges.Count - 1; i >= 0; --i)
+                {
+                    if(Random.value < RemoveChance)
+                    {
+                        count++;
+                        Edge e = n.Edges[i];
+                        n.Edges.RemoveAt(i);
+                        edges.Remove(e);
+                        for (int j = e.To.Edges.Count - 1; j >= 0; j--)
+                        {
+                            Edge et = e.To.Edges[j];
+                            if (et.To == e.From && et.From == e.To)
+                            {
+                                Edge e1 = e.To.Edges[j];
+                                e.To.Edges.RemoveAt(j);
+                                edges.Remove(e1);
+                                Destroy(et.gameObject);
+                                break;
+                            }
+                        }
+                        Destroy(e.gameObject);
+
+                        if ((n.Edges.Count) <= CountForRandomRemove)
+                            break;
+                    }
+                }
+            }
+        }
+        Debug.Log("Removed " + count + " edges");
     }
 
     public static Node GetUnoccupiedRandomNode()

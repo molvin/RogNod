@@ -25,6 +25,7 @@ public class GameLoop : MonoBehaviour
     // Properties
     public State CurrentState => stateMachine.currentState;
     public PlayerState PlayerState => stateMachine.GetState<PlayerState>() as PlayerState;
+    public RageQuitStage RageQuitState => stateMachine.GetState<RageQuitStage>() as RageQuitStage;
     public static Node PlayerNode => Instance.Player.Node;
 
     // Public Methods
