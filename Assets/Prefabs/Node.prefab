@@ -99,14 +99,18 @@ MonoBehaviour:
   Edges: []
   Occupants: []
   Renderer: {fileID: 4652075917547502097}
-  DefaultTile: {fileID: 4809639760874263086, guid: 51252fd7f2e36f44b91e9a84fb5b0fe0,
-    type: 3}
-  RedTile: {fileID: -3802767286388481799, guid: 51252fd7f2e36f44b91e9a84fb5b0fe0,
-    type: 3}
-  YellowTile: {fileID: -361718470343399362, guid: 51252fd7f2e36f44b91e9a84fb5b0fe0,
-    type: 3}
-  BlueTile: {fileID: -4155921400635668912, guid: 51252fd7f2e36f44b91e9a84fb5b0fe0,
-    type: 3}
+  DefaultTile:
+  - {fileID: -5092377170886943752, guid: 51252fd7f2e36f44b91e9a84fb5b0fe0, type: 3}
+  - {fileID: 4809639760874263086, guid: 51252fd7f2e36f44b91e9a84fb5b0fe0, type: 3}
+  RedTile:
+  - {fileID: 6045861956144463205, guid: 51252fd7f2e36f44b91e9a84fb5b0fe0, type: 3}
+  - {fileID: -3802767286388481799, guid: 51252fd7f2e36f44b91e9a84fb5b0fe0, type: 3}
+  YellowTile:
+  - {fileID: 4868127274553374841, guid: 51252fd7f2e36f44b91e9a84fb5b0fe0, type: 3}
+  - {fileID: -361718470343399362, guid: 51252fd7f2e36f44b91e9a84fb5b0fe0, type: 3}
+  BlueTile:
+  - {fileID: 3740697999444091331, guid: 51252fd7f2e36f44b91e9a84fb5b0fe0, type: 3}
+  - {fileID: -4155921400635668912, guid: 51252fd7f2e36f44b91e9a84fb5b0fe0, type: 3}
 --- !u!65 &1546686788743980194
 BoxCollider:
   m_ObjectHideFlags: 0

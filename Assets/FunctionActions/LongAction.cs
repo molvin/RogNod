@@ -48,7 +48,7 @@ public class LongAction : FunctionAction
     public override void ResetVisualization()
     {
         //reset particleEffect
-        Target.ResetTileGrapic();
+        Target.DemarkTile(Node.Marker.Red);
         /*  if (visualization != null)
             Destroy(visualization);
     */
@@ -56,7 +56,7 @@ public class LongAction : FunctionAction
     //private GameObject visualization;
     public override IEnumerator Visualize()
     {
-        Target.MarkTileRed();/*
+        Target.MarkTile(Node.Marker.Red);/*
         visualization = GameObject.CreatePrimitive(PrimitiveType.Cube);
         visualization.transform.position = Target.transform.position;*/
         yield return null;

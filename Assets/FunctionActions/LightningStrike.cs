@@ -14,12 +14,12 @@ public class LightningStrike : FunctionAction
     }
     public override IEnumerator Visualize()
     {
-        Target.MarkTileRed();
+        Target.MarkTile(Node.Marker.Red);
         yield return null;
     }
     public override void ResetVisualization()
     {
-        Target.ResetTileGrapic();
+        Target.DemarkTile(Node.Marker.Red);
 
     }
     // Update is called once per frame
