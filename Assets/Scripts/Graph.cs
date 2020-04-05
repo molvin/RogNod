@@ -19,6 +19,8 @@ public class Graph : MonoBehaviour
     private List<Node> nodes = new List<Node>();
     private List<Edge> edges = new List<Edge>();
 
+    public List<Node> Nodes => nodes.GetRange(0, nodes.Count);
+
     private void Awake()
     {
         Instance = this;
