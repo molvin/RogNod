@@ -5,13 +5,14 @@ using UnityEngine;
 public class VisualDeck : MonoBehaviour
 {
 
-    public Deck deck;
+    private Deck deck;
     public GameObject cardListItemPrefab;
     public GameObject contentParent;
 
     void Start()
     {
-        BuildDeckList();
+        deck = Persistance.Instance.Deck;
+        BuildDeckList(); 
     }
 
     private void BuildDeckList()
@@ -27,7 +28,7 @@ public class VisualDeck : MonoBehaviour
         {
             GameObject carListItem = Instantiate(cardListItemPrefab);
             carListItem.SetActive(true);
-            carListItem.GetComponent<CardListObject>().SetData(c.getTitle());
+            carListItem.GetComponent<CardListObject>().SetData(c.getTitle() + "(" + c.Cost + ")");
             carListItem.transform.SetParent(contentParent.transform, false);
         }
 
