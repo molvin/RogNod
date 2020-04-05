@@ -8,7 +8,8 @@ public class Swap : FunctionAction
 {
     public float actLerpTime;
     public List<Entity> targetSwapEntity;
-
+    public AudioClip audioClip;
+    
     // Start is called before the first frame update
     public override void Initialize(Entity actor)
     {
@@ -26,6 +27,8 @@ public class Swap : FunctionAction
     public override IEnumerator Act()
     {
         float time = 0;
+
+        GameLoop.Instance.audioSource.PlayOneShot(audioClip);
 
         while (time / actLerpTime <= 1f)
         {
