@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: 
   Icon: {fileID: 0}
+  Origin: {fileID: 0}
+  Target: {fileID: 0}
   actLerpTime: 1
-  targetSwapEntity: {fileID: 0}
-  origin: {fileID: 0}
-  target: {fileID: 0}
+  targetSwapEntity:
+  - {fileID: 0}
+  audioClip: {fileID: 8300000, guid: facb0d7e30e247d43a26e7a5d3f51815, type: 3}

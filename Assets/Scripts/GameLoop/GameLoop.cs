@@ -11,6 +11,7 @@ public class GameLoop : MonoBehaviour
     public List<Enemy> enemies;
     public List<Enemy> EnemyPrefabs;
 
+    public AudioSource audioSource;
     public int EnemyCount;
 
     public Player PlayerPrefab;
@@ -21,6 +22,7 @@ public class GameLoop : MonoBehaviour
 
     // Private Members
     private StateMachine stateMachine;
+
 
     // Properties
     public State CurrentState => stateMachine.currentState;
@@ -33,7 +35,11 @@ public class GameLoop : MonoBehaviour
     {
         Instance = this;
         stateMachine = new StateMachine(this, states);
-        
+
+        if (!GetComponent<AudioSource>())
+            gameObject.AddComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
+
         for(int i = 0; i < EnemyCount + Persistance.Instance.EnemyCountIncrease * Persistance.Instance.Round; i++)
         {
             Enemy prefab = EnemyPrefabs[Random.Range(0, EnemyPrefabs.Count)];
