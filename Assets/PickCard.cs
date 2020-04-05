@@ -40,6 +40,7 @@ public class PickCard : MonoBehaviour
             return;
         //TODO: do visualization, animation and shit
         Deck.AddPermant(c);
+        Deck.UpdateDeck();
         CanPick = false;
         b.gameObject.SetActive(false);
     }

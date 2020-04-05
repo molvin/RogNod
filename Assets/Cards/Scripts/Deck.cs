@@ -30,6 +30,11 @@ public class Deck : ScriptableObject
         Shuffle();
 
     }
+    public void UpdateDeck()
+    {
+        _cardQueue = new Queue<Card>(_permanentDeck);
+        Shuffle();
+    }
 
     public void AddPermant(Card card)
     {
