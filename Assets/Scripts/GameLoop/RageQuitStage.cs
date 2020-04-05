@@ -5,14 +5,19 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "GameLoop/RageQuitStage")]
 public class RageQuitStage : GameLoopState
 {
+    public bool RageQuit;
+    public float WaitTime = 3.0f;
+
     public override IEnumerator Enter()
     {
-        Debug.Log("QUIT");
+        RageQuit = true;
         yield return null;
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
+
+    }
+    public override IEnumerator Exit()
+    {
+        RageQuit = false;
+        yield return null;
+
     }
 }

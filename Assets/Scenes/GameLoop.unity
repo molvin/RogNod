@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fefe27c79dcee6c4898857f508de9c08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StickFactor: 100
+  DragFactor: 0
 --- !u!1001 &169805323
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -353,6 +353,8 @@ MonoBehaviour:
     type: 3}
   EdgePrefab: {fileID: 227755487175468537, guid: 6724cc10bcd613a418c3a03005f3a3a3,
     type: 3}
+  CountForRandomRemove: 3
+  RemoveChance: 0.5
 --- !u!4 &332655362
 Transform:
   m_ObjectHideFlags: 0

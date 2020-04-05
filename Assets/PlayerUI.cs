@@ -29,6 +29,7 @@ public class PlayerUI : MonoBehaviour
     public Button EndTurnButton;
     private bool inState = true;
     private bool won = false;
+    private bool lost = false;
     public Animator Anim;
 
     public TextMeshProUGUI Text;
@@ -54,6 +55,16 @@ public class PlayerUI : MonoBehaviour
 
     private void Update()
     {
+        if(GameLoop.Instance.RageQuitState.RageQuit)
+        {
+            if(!lost)
+            {
+                lost = true;
+                Anim.SetBool("Lost", true);              
+            }
+            return;
+        }
+
         if(GameLoop.Instance.CurrentState is PickCardState)
         {
             if(!won)
@@ -136,7 +147,8 @@ public class PlayerUI : MonoBehaviour
             if (VisualizeCoroutine != null)
             {
                 StopCoroutine(VisualizeCoroutine);
-                pendingAction.ResetVisualization();
+                if (pendingAction != null)
+                    pendingAction.ResetVisualization();
             }
             pendingAction = null;
             return;
@@ -152,7 +164,8 @@ public class PlayerUI : MonoBehaviour
         if (VisualizeCoroutine != null)
         {
             StopCoroutine(VisualizeCoroutine);
-            pendingAction.ResetVisualization();
+            if(pendingAction != null)
+                pendingAction.ResetVisualization();
         }
 
         pendingAction = action;
@@ -223,6 +236,15 @@ public class PlayerUI : MonoBehaviour
         {
             PerformAction();
             return;
+        }
+        if(SelectedCard != null && i != index)
+        {
+            if(pendingAction != null)
+            {
+                if(VisualizeCoroutine != null)
+                    StopCoroutine(VisualizeCoroutine);
+                pendingAction.ResetVisualization();
+            }
         }
         SelectedCard = c;
         index = i;
