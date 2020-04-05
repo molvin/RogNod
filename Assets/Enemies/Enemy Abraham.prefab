@@ -542,8 +542,9 @@ MonoBehaviour:
   health: 100
   Node: {fileID: 0}
   actionDeck:
-  - {fileID: 11400000, guid: 18d96d790777cf84ba86413426f2f517, type: 2}
-  - {fileID: 11400000, guid: 18d96d790777cf84ba86413426f2f517, type: 2}
+  - {fileID: 11400000, guid: 251c2a06f8dbb0f4d8b1ab23b8976845, type: 2}
+  - {fileID: 11400000, guid: 55721903e304c0447bebb5a9c6f8b924, type: 2}
+  card: {fileID: 0}
   action: {fileID: 0}
   HpText: {fileID: 8719768700158681929}
 --- !u!212 &95062213357455104

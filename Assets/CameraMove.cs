@@ -8,15 +8,34 @@ public class CameraMove : MonoBehaviour
     float maxSize = 15f;
     float sensitivity = 2f;
 
-    public float StickFactor;
-    private Vector2 grabPos;
+    public float DragFactor;
+    private Vector3 grabPos;
+    private Vector3 cameraPos;
     void Update()
     {
-        Vector2 pos = new Vector2(Input.mousePosition.x - Screen.width / 2, Input.mousePosition.y - Screen.height / 2) / StickFactor;
-        transform.position = new Vector3(pos.x, pos.y, -10);
+        DragCamera();
         UpdateZoom();
     }
 
+    void FocusCamera(Vector3 position)
+    {
+        transform.position = new Vector3(position.x, position.y, 10);
+    }
+
+    void DragCamera()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            grabPos = Input.mousePosition;
+            cameraPos = transform.position;
+        }
+
+        if (Input.GetMouseButton(0))
+        {
+            Vector3 delta = grabPos - Input.mousePosition;
+            transform.position = cameraPos + delta * DragFactor;
+        }
+    }
 
 
     void UpdateZoom()
