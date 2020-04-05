@@ -88,6 +88,8 @@ public class ShockWaveTeleport : FunctionAction
 
         visualizeChar = Instantiate(actor.gameObject);
         SpriteRenderer renderer = visualizeChar.GetComponentInChildren<SpriteRenderer>();
+        Destroy(visualizeChar.GetComponentInChildren<TextMeshProUGUI>());
+        Destroy(visualizeChar.GetComponentInChildren<Image>());
         Color c = renderer.color;
         c.a = 0.65f;
         renderer.color = c;
