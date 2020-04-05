@@ -36,6 +36,8 @@ public class PlayerUI : MonoBehaviour
 
     private int index;
 
+    public Button MainMenuButton;
+
     private void Start()
     {
         Deck = Persistance.Instance.Deck;
@@ -51,6 +53,7 @@ public class PlayerUI : MonoBehaviour
             Energy.Add(Instantiate(EnergyPrefab, EnergyParent));
         }
         Text.text = "";
+        MainMenuButton.onClick.AddListener(() => UnityEngine.SceneManagement.SceneManager.LoadScene(0));
     }
 
     private void Update()
@@ -70,6 +73,7 @@ public class PlayerUI : MonoBehaviour
             if(!won)
             {
                 won = true;
+                Deck.ClearHand();
                 Anim.SetBool("PickCard", true);
             }
             return;
@@ -273,6 +277,8 @@ public class PlayerUI : MonoBehaviour
         CurrentEnergy = MaxEnergy;
         inState = false;
         Text.text = "";
+        Deck.ClearHand();
+        
     }
 
     private IEnumerator Visualize()

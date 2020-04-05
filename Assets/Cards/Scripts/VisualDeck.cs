@@ -12,17 +12,15 @@ public class VisualDeck : MonoBehaviour
     void Start()
     {
         deck = Persistance.Instance.Deck;
-        BuildDeckList(); 
+        deck.OnPlayDeckUpdate = BuildDeckList;
     }
 
-    private void BuildDeckList()
+    private void BuildDeckList(Queue<Card> cards)
     {
         foreach (Transform child in contentParent.transform)
         {
-            GameObject.Destroy(child.gameObject);
+            Destroy(child.gameObject);
         }
-
-        List<Card> cards = deck.getAllPermanetsCards();
  
         foreach (Card c in cards)
         {

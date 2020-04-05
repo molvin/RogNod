@@ -17,6 +17,7 @@ public class Enemy : Entity
             if (health <= 0)
             {
                 Node.RemoveOccupant(this);
+                action?.ResetVisualization();
                 GameLoop.Instance.enemies.Remove(this);
                 Destroy(gameObject);
             }

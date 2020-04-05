@@ -12,6 +12,8 @@ public class ShockWaveTeleport : FunctionAction
     private GameObject visualizeChar;
 
 
+    public AudioClip audioClip;
+
     public override void Initialize(Entity actor)
     {
         this.actor = actor;
@@ -49,6 +51,7 @@ public class ShockWaveTeleport : FunctionAction
                 time += Time.deltaTime;
                 yield return null;
             }
+           //AudioSource.
 
             //Iterates through nextNodes Occupants and damages
             for (int j = nextNode.Occupants.Count -1; j >= 0; j--)
@@ -59,6 +62,7 @@ public class ShockWaveTeleport : FunctionAction
                 }
             }
         }
+        ResetVisualization();
         Target.AddOccupant(actor);        
     }
     public override IEnumerator Visualize()

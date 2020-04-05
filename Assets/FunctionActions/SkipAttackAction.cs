@@ -7,10 +7,8 @@ using UnityEngine;
 public class SkipAttackAction : FunctionAction
 {
     public int damage;
-    public Material acceptMat;
-    public Material denyMat;
+    public GameObject particleEffect;
 
-    private GameObject visualization;
     private List<Node> acceptableNode;
     public override void Initialize(Entity actor)
     {
@@ -22,23 +20,17 @@ public class SkipAttackAction : FunctionAction
     {
         if (!acceptableNode.Contains(Target))
             Target = acceptableNode[Random.Range(0, acceptableNode.Count)];
-        Debug.Log("Play ParticleEffect");
         for (int i = Target.Occupants.Count - 1; i >= 0; i--)
         {
             Entity e = Target.Occupants[i];
-            Debug.Log("Damaging enemy: " + e.name);
             e.Health -= damage;
         }
 
-
-        if (visualization != null)
-            Destroy(visualization);
-        visualization = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        visualization.transform.position = Target.transform.position;
-        visualization.transform.GetComponent<MeshRenderer>().sharedMaterial = acceptableNode.Contains(Target) ? acceptMat : denyMat;
+        Target.MarkTile(Node.Marker.Red);
+        GameObject particle = Instantiate(particleEffect, Target.transform);
         yield return new WaitForSeconds(0.6f);
-        if (visualization != null)
-            Destroy(visualization);
+        Destroy(particle);
+        Target.DemarkTile(Node.Marker.Red);
     }
 
     public override void AIDecision()
@@ -51,19 +43,12 @@ public class SkipAttackAction : FunctionAction
 
     public override void ResetVisualization()
     {
-        //reset particleEffect
-        Debug.Log("Reset ParticleEffect");
-        if (visualization != null)
-            Destroy(visualization);
+        Target.DemarkTile(acceptableNode.Contains(Target) ? Node.Marker.Blue : Node.Marker.Yellow);
     }
     
     public override IEnumerator Visualize()
     {
-        if (visualization != null)
-            Destroy(visualization);
-        visualization = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        visualization.transform.position = Target.transform.position;
-        visualization.transform.GetComponent<MeshRenderer>().sharedMaterial = acceptableNode.Contains(Target) ? acceptMat : denyMat;
+        Target.MarkTile(acceptableNode.Contains(Target) ? Node.Marker.Blue : Node.Marker.Yellow);
         yield return null;
     }
 }

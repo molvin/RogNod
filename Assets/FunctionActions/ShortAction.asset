@@ -17,3 +17,4 @@ MonoBehaviour:
   Origin: {fileID: 0}
   Target: {fileID: 0}
   damage: 50
+  audioClip: {fileID: 8300000, guid: fb3531b6af7e7744381d1aaf646639b9, type: 3}

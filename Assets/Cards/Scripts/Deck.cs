@@ -35,6 +35,13 @@ public class Deck : ScriptableObject
         _cardQueue = new Queue<Card>(_permanentDeck);
         Shuffle();
     }
+    public void ClearHand()
+    {
+        foreach (Card c in hand)
+            ReinsertCard(c);
+        hand.Clear();
+        OnHandUpdate?.Invoke(hand);
+    }
 
     public void AddPermant(Card card)
     {
@@ -110,11 +117,13 @@ public class Deck : ScriptableObject
         bool removed = hand.Remove(card);
         _cardQueue.Enqueue(card);
         OnHandUpdate?.Invoke(hand);
+        OnPlayDeckUpdate?.Invoke(_cardQueue);
     }
 
     public void Shuffle()
     {
         _cardQueue = new Queue<Card>(_cardQueue.OrderBy(x => Random.value));
+        OnPlayDeckUpdate?.Invoke(_cardQueue);
     }
 
 }
