@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ba5c2475e92177479a7c417a1d81b52, type: 3}
+  m_Name: MultiStrikeAction
+  m_EditorClassIdentifier: 
+  Name: MultiStrike
+  Icon: {fileID: 0}
+  Origin: {fileID: 0}
+  Target: {fileID: 0}
+  damage: 10
+  particalEffect: {fileID: 4989583328115066850, guid: edcb99547e69e19449451d1ba531dd9d,
+    type: 3}
+  Count: 3

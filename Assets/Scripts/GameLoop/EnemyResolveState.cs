@@ -15,6 +15,8 @@ public class EnemyResolveState : GameLoopState
         {
             if (!GameLoop.enemies.Contains(enemy))
                 continue;
+            enemy.action.ResetVisualization();
+
             if (!enemy.Stunned)
                 yield return enemy.action.Act();
             else
