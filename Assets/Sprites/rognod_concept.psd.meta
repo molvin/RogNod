@@ -41,8 +41,14 @@ TextureImporter:
   - first:
       213: -2345206432998957368
     second: rognod_concept_12
+  - first:
+      213: -4778950974589378947
+    second: rognod_concept_13
+  - first:
+      213: -6675051230527210900
+    second: rognod_concept_14
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -96,6 +102,7 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -128,12 +135,12 @@ TextureImporter:
       name: rognod_concept_0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 782
-        width: 444
-        height: 209
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 745
+        width: 480
+        height: 246
+      alignment: 9
+      pivot: {x: 0.50570554, y: 0.36598366}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -154,7 +161,7 @@ TextureImporter:
         width: 6
         height: 5
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -170,12 +177,12 @@ TextureImporter:
       name: rognod_concept_2
       rect:
         serializedVersion: 2
-        x: 9
+        x: 0
         y: 500
-        width: 511
+        width: 539
         height: 245
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.45205975, y: 0.36543617}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -196,7 +203,7 @@ TextureImporter:
         width: 6
         height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -217,7 +224,7 @@ TextureImporter:
         width: 6
         height: 5
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -238,7 +245,7 @@ TextureImporter:
         width: 6
         height: 5
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -254,12 +261,12 @@ TextureImporter:
       name: rognod_concept_6
       rect:
         serializedVersion: 2
-        x: 18
-        y: 254
-        width: 511
-        height: 224
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 255
+        width: 555
+        height: 223
+      alignment: 9
+      pivot: {x: 0.4546639, y: 0.27415693}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -280,7 +287,7 @@ TextureImporter:
         width: 6
         height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -301,7 +308,7 @@ TextureImporter:
         width: 6
         height: 5
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -322,7 +329,7 @@ TextureImporter:
         width: 6
         height: 5
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -343,7 +350,7 @@ TextureImporter:
         width: 6
         height: 5
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -359,12 +366,12 @@ TextureImporter:
       name: rognod_concept_11
       rect:
         serializedVersion: 2
-        x: 17
-        y: 31
-        width: 444
-        height: 222
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 27
+        width: 491
+        height: 226
+      alignment: 9
+      pivot: {x: 0.48185283, y: 0.3541236}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -385,7 +392,7 @@ TextureImporter:
         width: 115
         height: 5
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -393,6 +400,48 @@ TextureImporter:
       bones: []
       spriteID: 8ced224bc27247fd0800000000000000
       internalID: -2345206432998957368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rognod_concept_13
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 839
+        width: 162
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7ed7989861cdadb0800000000000000
+      internalID: -4778950974589378947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rognod_concept_14
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 721
+        width: 148
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6a34e295447d53a0800000000000000
+      internalID: -6675051230527210900
       vertices: []
       indices: 
       edges: []
