@@ -287,7 +287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   Node: {fileID: 0}
-  HpText: {fileID: 0}
+  HpText: {fileID: 3532806189034965224}
 --- !u!212 &6620469485349312784
 SpriteRenderer:
   m_ObjectHideFlags: 0
