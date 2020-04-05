@@ -103,6 +103,8 @@ public class ShockWaveTeleport : FunctionAction
             //lerps position to nextNode
             while (time / (actLerpTime / path.Count) <= 1f)
             {
+                if (visualizeChar == null)
+                    break;
                 visualizeChar.transform.position = Vector3.Lerp(currentNode.transform.position, nextNode.transform.position, time / (actLerpTime / path.Count));
                 time += Time.deltaTime;
                 yield return null;
