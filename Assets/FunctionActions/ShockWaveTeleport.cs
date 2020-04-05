@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
+using UnityEngine.UI;
 //Targets any Unoccupied Node.
 [CreateAssetMenu()]
 public class ShockWaveTeleport : FunctionAction
@@ -88,6 +89,8 @@ public class ShockWaveTeleport : FunctionAction
 
         visualizeChar = Instantiate(actor.gameObject);
         SpriteRenderer renderer = visualizeChar.GetComponentInChildren<SpriteRenderer>();
+        Destroy(visualizeChar.GetComponentInChildren<TextMeshProUGUI>());
+        Destroy(visualizeChar.GetComponentInChildren<Image>());
         Color c = renderer.color;
         c.a = 0.65f;
         renderer.color = c;
