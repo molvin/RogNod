@@ -17,5 +17,5 @@ MonoBehaviour:
   Origin: {fileID: 0}
   Target: {fileID: 0}
   damage: 60
-  acceptMat: {fileID: 2100000, guid: 62ab5b9e54b00d74fab3fa9cbcd1cc01, type: 2}
-  denyMat: {fileID: 2100000, guid: e7cd4b55c27ba534aa77bef688873095, type: 2}
+  particleEffect: {fileID: 4920866326171834254, guid: e70c708eee67511449b92ed0e334695d,
+    type: 3}
