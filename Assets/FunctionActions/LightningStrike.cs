@@ -28,9 +28,14 @@ public class LightningStrike : FunctionAction
         Debug.Log("Play ParticleEffect");
         for (int i = Target.Occupants.Count - 1; i >= 0; i--)
         {
+            
             Entity e = Target.Occupants[i];
-            Debug.Log("Damaging enemy: " + e.name);
-            e.Health -= damage;
+
+            //Checks if target entity is of other type;
+            if(actor is Enemy && e is Player || actor is Player && e is Enemy)
+            {
+                e.Health -= damage;
+            }
         }
         yield return null;
     }

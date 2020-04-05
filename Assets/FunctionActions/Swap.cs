@@ -55,7 +55,7 @@ public class Swap : FunctionAction
             }
             Origin.RemoveOccupant(e);
         }
-
+        //Add Target occupants to list
         List<Entity> TargetOccupantTest = Target.Occupants.GetRange(0, Target.Occupants.Count);
 
         for (int i = Target.Occupants.Count - 1; i >= 0; i--)
@@ -85,7 +85,7 @@ public class Swap : FunctionAction
     {
         float time = 0;
 
-        while (time / actLerpTime <= 0.5f)
+        while (time / actLerpTime <= 1f)
         {
             foreach (Entity e in Origin.Occupants)
             {
