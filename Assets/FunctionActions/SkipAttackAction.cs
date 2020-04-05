@@ -10,6 +10,7 @@ public class SkipAttackAction : FunctionAction
     public Material acceptMat;
     public Material denyMat;
 
+    private GameObject visualization;
     private List<Node> acceptableNode;
     public override void Initialize(Entity actor)
     {
@@ -28,7 +29,16 @@ public class SkipAttackAction : FunctionAction
             Debug.Log("Damaging enemy: " + e.name);
             e.Health -= damage;
         }
-        yield return Visualize();
+
+
+        if (visualization != null)
+            Destroy(visualization);
+        visualization = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        visualization.transform.position = Target.transform.position;
+        visualization.transform.GetComponent<MeshRenderer>().sharedMaterial = acceptableNode.Contains(Target) ? acceptMat : denyMat;
+        yield return new WaitForSeconds(0.6f);
+        if (visualization != null)
+            Destroy(visualization);
     }
 
     public override void AIDecision()
@@ -46,13 +56,14 @@ public class SkipAttackAction : FunctionAction
         if (visualization != null)
             Destroy(visualization);
     }
-    private GameObject visualization;
+    
     public override IEnumerator Visualize()
     {
+        if (visualization != null)
+            Destroy(visualization);
         visualization = GameObject.CreatePrimitive(PrimitiveType.Cube);
         visualization.transform.position = Target.transform.position;
         visualization.transform.GetComponent<MeshRenderer>().sharedMaterial = acceptableNode.Contains(Target) ? acceptMat : denyMat;
-        yield return new WaitForSeconds(0.6f);
-        Destroy(visualization);
+        yield return null;
     }
 }
