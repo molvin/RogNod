@@ -27,6 +27,7 @@ public class LongAction : FunctionAction
     }
     public override IEnumerator Act()
     {
+        Visualize();
         Debug.Log("Play ParticleEffect");
         for (int i = Target.Occupants.Count - 1; i >= 0; i--)
         {
@@ -34,7 +35,9 @@ public class LongAction : FunctionAction
             Debug.Log("Damaging enemy: " + e.name);
             e.Health -= damage;
         }
-        yield return Visualize();
+        ResetVisualization();
+        yield return null;
+       // yield return Visualize();
     }
 
     public override void AIDecision()
@@ -45,16 +48,17 @@ public class LongAction : FunctionAction
     public override void ResetVisualization()
     {
         //reset particleEffect
-        Debug.Log("Reset ParticleEffect");
-        if (visualization != null)
+        Target.ResetTileGrapic();
+        /*  if (visualization != null)
             Destroy(visualization);
+    */
     }
-    private GameObject visualization;
+    //private GameObject visualization;
     public override IEnumerator Visualize()
     {
+        Target.MarkTileRed();/*
         visualization = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        visualization.transform.position = Target.transform.position;
-        yield return new WaitForSeconds(0.6f);
-        Destroy(visualization);
+        visualization.transform.position = Target.transform.position;*/
+        yield return null;
     }
 }

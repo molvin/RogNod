@@ -84,7 +84,8 @@ public class Swap : FunctionAction
     public override IEnumerator Visualize()
     {
         float time = 0;
-
+        Origin.MarkTileBlue();
+        Target.MarkTileBlue();
         while (time / actLerpTime <= 1f)
         {
             foreach (Entity e in Origin.Occupants)
@@ -104,8 +105,15 @@ public class Swap : FunctionAction
     public override void ResetVisualization()
     {
         foreach (Entity e in Origin.Occupants)
+        {
+            Origin.ResetTileGrapic();
             e.transform.localPosition = Vector3.zero;
+        }
+
         foreach (Entity e in Target.Occupants)
+        {
+            Target.ResetTileGrapic();
             e.transform.localPosition = Vector3.zero;
+        }
     }
 }
