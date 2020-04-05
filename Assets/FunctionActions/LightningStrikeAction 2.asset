@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37bc08324045b3549840b8538983128c, type: 3}
-  m_Name: LightningStrikeAction
+  m_Name: LightningStrikeAction 2
   m_EditorClassIdentifier: 
   Name: 
   Icon: {fileID: 0}
@@ -19,3 +19,4 @@ MonoBehaviour:
   damage: 30
   particalEffect: {fileID: 4989583328115066850, guid: edcb99547e69e19449451d1ba531dd9d,
     type: 3}
+  audioClip: {fileID: 0}
