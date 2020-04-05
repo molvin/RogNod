@@ -6,7 +6,8 @@ public class LightningStrike : FunctionAction
 {
 
     public int damage;
-    public GameObject particalEffect; 
+    public GameObject particalEffect;
+    public AudioClip audioClip;
 
     public override void AIDecision()
     {
@@ -25,7 +26,8 @@ public class LightningStrike : FunctionAction
     // Update is called once per frame
     public override IEnumerator Act()
     {
-        Debug.Log("Play ParticleEffect");
+        GameLoop.Instance.audioSource.PlayOneShot(audioClip);
+
         GameObject particle = Instantiate(particalEffect, Target.transform);
 
         for (int i = Target.Occupants.Count - 1; i >= 0; i--)

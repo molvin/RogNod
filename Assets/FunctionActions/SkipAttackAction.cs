@@ -7,10 +7,8 @@ using UnityEngine;
 public class SkipAttackAction : FunctionAction
 {
     public int damage;
-    public Material acceptMat;
-    public Material denyMat;
+    public GameObject particleEffect;
 
-    private GameObject visualization;
     private List<Node> acceptableNode;
     public override void Initialize(Entity actor)
     {
@@ -22,16 +20,16 @@ public class SkipAttackAction : FunctionAction
     {
         if (!acceptableNode.Contains(Target))
             Target = acceptableNode[Random.Range(0, acceptableNode.Count)];
-        Debug.Log("Play ParticleEffect");
         for (int i = Target.Occupants.Count - 1; i >= 0; i--)
         {
             Entity e = Target.Occupants[i];
-            Debug.Log("Damaging enemy: " + e.name);
             e.Health -= damage;
         }
 
         Target.MarkTile(Node.Marker.Red);
+        GameObject particle = Instantiate(particleEffect, Target.transform);
         yield return new WaitForSeconds(0.6f);
+        Destroy(particle);
         Target.DemarkTile(Node.Marker.Red);
     }
 
