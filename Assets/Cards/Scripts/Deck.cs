@@ -35,6 +35,13 @@ public class Deck : ScriptableObject
         _cardQueue = new Queue<Card>(_permanentDeck);
         Shuffle();
     }
+    public void ClearHand()
+    {
+        foreach (Card c in hand)
+            ReinsertCard(c);
+        hand.Clear();
+        OnHandUpdate?.Invoke(hand);
+    }
 
     public void AddPermant(Card card)
     {

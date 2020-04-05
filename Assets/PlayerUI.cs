@@ -70,6 +70,7 @@ public class PlayerUI : MonoBehaviour
             if(!won)
             {
                 won = true;
+                Deck.ClearHand();
                 Anim.SetBool("PickCard", true);
             }
             return;
@@ -273,6 +274,8 @@ public class PlayerUI : MonoBehaviour
         CurrentEnergy = MaxEnergy;
         inState = false;
         Text.text = "";
+        Deck.ClearHand();
+        
     }
 
     private IEnumerator Visualize()
