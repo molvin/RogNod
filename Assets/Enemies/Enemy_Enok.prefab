@@ -206,7 +206,7 @@ MonoBehaviour:
   Node: {fileID: 0}
   actionDeck:
   - {fileID: 11400000, guid: 1bac3665629039840b7674264ce94814, type: 2}
-  - {fileID: 11400000, guid: deced0fa5a32fe34294e96e5b8022926, type: 2}
+  - {fileID: 11400000, guid: 90d9b1137d8b16f449c462ce5a3f5b59, type: 2}
   - {fileID: 11400000, guid: 7f66dce3b09c12045a32073e60afc94a, type: 2}
   card: {fileID: 0}
   action: {fileID: 0}

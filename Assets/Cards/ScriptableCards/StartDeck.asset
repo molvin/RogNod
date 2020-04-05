@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: StartDeck
   m_EditorClassIdentifier: 
   _startingDeck:
-  - {fileID: 11400000, guid: 55721903e304c0447bebb5a9c6f8b924, type: 2}
   - {fileID: 11400000, guid: 5157f8a796fdea341b978a0e8da8efac, type: 2}
-  - {fileID: 11400000, guid: deced0fa5a32fe34294e96e5b8022926, type: 2}
+  - {fileID: 11400000, guid: 5157f8a796fdea341b978a0e8da8efac, type: 2}
+  - {fileID: 11400000, guid: 55721903e304c0447bebb5a9c6f8b924, type: 2}
+  - {fileID: 11400000, guid: 55721903e304c0447bebb5a9c6f8b924, type: 2}
+  - {fileID: 11400000, guid: 6e9628bd7c5a48f4b9aae6e6fa310877, type: 2}
   handSize: 3
