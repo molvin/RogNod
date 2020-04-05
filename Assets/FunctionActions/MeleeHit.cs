@@ -27,6 +27,8 @@ public class MeleeHit : FunctionAction
     {
         foreach(Edge e in Origin.Edges)
         {
+            if (Target == null)
+                Target = e.To;
             if (e.To.Equals(GameLoop.PlayerNode))
                 Target = e.To;
         }
