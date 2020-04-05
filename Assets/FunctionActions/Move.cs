@@ -14,7 +14,7 @@ public class Move : FunctionAction
     public Sprite arrow;
 
     private GameObject visualizeChar;
-    private GameObject visualizeArrow;
+    //private GameObject visualizeArrow;
 
     public override void Initialize(Entity actor)
     {
@@ -43,7 +43,7 @@ public class Move : FunctionAction
         if (visualizeChar != null)
         {
             Destroy(visualizeChar);
-            Destroy(visualizeArrow);
+            //Destroy(visualizeArrow);
         }
         float time = 0;
         Origin.RemoveOccupant(actor);
@@ -69,7 +69,7 @@ public class Move : FunctionAction
         if (visualizeChar != null)
         {
             Destroy(visualizeChar);
-            Destroy(visualizeArrow);
+            //Destroy(visualizeArrow);
         }
 
         visualizeChar = Instantiate(actor.gameObject);
@@ -80,14 +80,14 @@ public class Move : FunctionAction
         c.a = 0.65f;
         renderer.color = c;
 
-        visualizeArrow = new GameObject();
+        /*visualizeArrow = new GameObject();
         SpriteRenderer ren = visualizeArrow.AddComponent<SpriteRenderer>();
         ren.sprite = arrow;
         ren.color = Color.green;
         visualizeArrow.transform.position = (Origin.transform.position * 0.7f + Target.transform.position * 0.3f);
         if (Target.transform.position.x < Origin.transform.position.x)
             ren.flipX = true;
-
+        */
         float time = 0;
         while(time / VisualLerpTime <= 1f)
         {
@@ -104,7 +104,7 @@ public class Move : FunctionAction
         if (visualizeChar != null)
         {
             Destroy(visualizeChar);
-            Destroy(visualizeArrow);
+            //Destroy(visualizeArrow);
         }
     }
 }
