@@ -14,23 +14,20 @@ public class LightningStrike : FunctionAction
     }
     public override IEnumerator Visualize()
     {
-        Debug.Log("Play LightningStrike ParticleEffect here");
-        GameObject particle = Instantiate(particalEffect, Target.transform);
-        
-        //particle.transform.LookAt(Target.transform, Vector2.up);
-        
+        Target.MarkTileRed();
         yield return null;
-        ResetVisualization();
     }
     public override void ResetVisualization()
     {
-        //reset particleEffect
-        Debug.Log("Reset ParticleEffect");
+        Target.ResetTileGrapic();
+
     }
     // Update is called once per frame
     public override IEnumerator Act()
     {
         Debug.Log("Play ParticleEffect");
+        GameObject particle = Instantiate(particalEffect, Target.transform);
+
         for (int i = Target.Occupants.Count - 1; i >= 0; i--)
         {
             
