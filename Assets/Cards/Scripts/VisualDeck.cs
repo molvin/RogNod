@@ -12,7 +12,7 @@ public class VisualDeck : MonoBehaviour
     void Start()
     {
         deck = Persistance.Instance.Deck;
-        deck.OnPlayDeckUpdate += BuildDeckList;
+        deck.OnPlayDeckUpdate = BuildDeckList;
     }
 
     private void BuildDeckList(Queue<Card> cards)
