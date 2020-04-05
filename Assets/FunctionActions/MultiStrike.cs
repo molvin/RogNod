@@ -9,6 +9,7 @@ public class MultiStrike : FunctionAction
     public GameObject particalEffect;
     private List<Node> Targets = new List<Node>();
     public int Count;
+    public AudioClip audioClip;
 
     public override void AIDecision()
     {
@@ -39,6 +40,8 @@ public class MultiStrike : FunctionAction
     public override IEnumerator Act()
     {
         Debug.Log("Play ParticleEffect");
+        GameLoop.Instance.audioSource.PlayOneShot(audioClip);
+
         foreach (Node t in Targets)
         {
             GameObject particle = Instantiate(particalEffect, t.transform);

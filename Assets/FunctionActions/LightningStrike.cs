@@ -15,12 +15,18 @@ public class LightningStrike : FunctionAction
     }
     public override IEnumerator Visualize()
     {
-        Target.MarkTile(Node.Marker.Red);
+        if (actor is Enemy)
+            Target.MarkTile(Node.Marker.Red);
+        else
+            Target.MarkTile(Node.Marker.Yellow);
         yield return null;
     }
     public override void ResetVisualization()
     {
-        Target.DemarkTile(Node.Marker.Red);
+        if (actor is Enemy)
+            Target.DemarkTile(Node.Marker.Red);
+        else
+            Target.DemarkTile(Node.Marker.Yellow);
 
     }
     // Update is called once per frame
