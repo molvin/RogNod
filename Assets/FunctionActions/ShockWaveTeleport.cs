@@ -61,7 +61,7 @@ public class ShockWaveTeleport : FunctionAction
         
         foreach(Node n in path)
         {
-            n.MarkTileRed();
+            n.MarkTile(Node.Marker.Red);
         }
 
         for (int i = 0; i < path.Count; i++)
@@ -84,7 +84,7 @@ public class ShockWaveTeleport : FunctionAction
     {
         foreach (Node n in Graph.Instance.ShortestPath(Origin, Target))
         {
-            n.ResetTileGrapic();
+            n.MarkTile(Node.Marker.Red);
         }
         actor.transform.localPosition = Vector3.zero;
     }

@@ -29,7 +29,7 @@ public class Node : MonoBehaviour
         //Pick default
         if (markers[0] == 0 && markers[1] == 0 && markers[2] == 0)
         {
-            SetToColor(lastAdded);
+            SetToColor(Marker.Default);
             return;
         }
 
