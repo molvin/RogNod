@@ -15,8 +15,9 @@ public class LightningStrike : FunctionAction
     public override IEnumerator Visualize()
     {
         Debug.Log("Play LightningStrike ParticleEffect here");
-        GameObject particle = Instantiate(particalEffect, actor.transform);
-        particle.transform.LookAt(Target.transform, Vector2.up);
+        GameObject particle = Instantiate(particalEffect, Target.transform);
+        
+        //particle.transform.LookAt(Target.transform, Vector2.up);
         
         yield return null;
         ResetVisualization();

@@ -17,3 +17,5 @@ MonoBehaviour:
   Origin: {fileID: 0}
   Target: {fileID: 0}
   damage: 40
+  particalEffect: {fileID: 4989583328115066850, guid: edcb99547e69e19449451d1ba531dd9d,
+    type: 3}
