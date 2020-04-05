@@ -41,5 +41,4 @@ public class LightningStrike : FunctionAction
         }
         yield return null;
     }
-
 }

@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu()]
 public class Move : FunctionAction
@@ -72,6 +74,8 @@ public class Move : FunctionAction
 
         visualizeChar = Instantiate(actor.gameObject);
         SpriteRenderer renderer = visualizeChar.GetComponentInChildren<SpriteRenderer>();
+        Destroy(visualizeChar.GetComponentInChildren<TextMeshProUGUI>());
+        Destroy(visualizeChar.GetComponentInChildren<Image>());
         Color c = renderer.color;
         c.a = 0.65f;
         renderer.color = c;

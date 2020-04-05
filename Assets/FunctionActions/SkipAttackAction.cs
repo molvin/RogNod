@@ -30,15 +30,9 @@ public class SkipAttackAction : FunctionAction
             e.Health -= damage;
         }
 
-
-        if (visualization != null)
-            Destroy(visualization);
-        visualization = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        visualization.transform.position = Target.transform.position;
-        visualization.transform.GetComponent<MeshRenderer>().sharedMaterial = acceptableNode.Contains(Target) ? acceptMat : denyMat;
+        Target.MarkTile(Node.Marker.Red);
         yield return new WaitForSeconds(0.6f);
-        if (visualization != null)
-            Destroy(visualization);
+        Target.DemarkTile(Node.Marker.Red);
     }
 
     public override void AIDecision()
@@ -51,19 +45,12 @@ public class SkipAttackAction : FunctionAction
 
     public override void ResetVisualization()
     {
-        //reset particleEffect
-        Debug.Log("Reset ParticleEffect");
-        if (visualization != null)
-            Destroy(visualization);
+        Target.DemarkTile(acceptableNode.Contains(Target) ? Node.Marker.Blue : Node.Marker.Yellow);
     }
     
     public override IEnumerator Visualize()
     {
-        if (visualization != null)
-            Destroy(visualization);
-        visualization = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        visualization.transform.position = Target.transform.position;
-        visualization.transform.GetComponent<MeshRenderer>().sharedMaterial = acceptableNode.Contains(Target) ? acceptMat : denyMat;
+        Target.MarkTile(acceptableNode.Contains(Target) ? Node.Marker.Blue : Node.Marker.Yellow);
         yield return null;
     }
 }
