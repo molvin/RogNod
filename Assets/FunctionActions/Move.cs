@@ -10,6 +10,8 @@ public class Move : FunctionAction
     public float VisualLerpTime;
     public int EnemyMoveDamage;
 
+    private GameObject visualization;
+
     public override void Initialize(Entity actor)
     {
         this.actor = actor;
@@ -55,18 +57,27 @@ public class Move : FunctionAction
     }
     public override IEnumerator Visualize()
     {
+        if (visualization != null)
+            Destroy(visualization);
+
+        visualization = Instantiate(actor.gameObject);
+
         float time = 0;
-        while(time / VisualLerpTime <= 0.5f)
+        while(time / VisualLerpTime <= 1f)
         {
-            actor.transform.position = Vector3.Lerp(Origin.transform.position, Target.transform.position, time / VisualLerpTime);
+            if (visualization == null)
+                break;
+            visualization.transform.position = Vector3.Lerp(Origin.transform.position, Target.transform.position, time / VisualLerpTime);
             time += Time.deltaTime;
             yield return null;
         }
-        actor.transform.localPosition = Vector3.zero;
+        if (visualization != null)
+            Destroy(visualization);
     }
 
     public override void ResetVisualization()
     {
-        actor.transform.localPosition = Vector3.zero;
+        if (visualization != null)
+            Destroy(visualization);
     }
 }
