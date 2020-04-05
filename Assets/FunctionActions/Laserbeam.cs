@@ -10,6 +10,12 @@ public class Laserbeam : FunctionAction
     public int MaxRange;
     public GameObject LightningStrike;
 
+    public override void Initialize(Entity actor)
+    {
+        base.Initialize(actor);
+        Origin = actor.Node;
+    }
+
     public override IEnumerator Act() {
         List<Node> hitnodes = GetNodes();
         foreach (Node n in hitnodes)

@@ -543,6 +543,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 251c2a06f8dbb0f4d8b1ab23b8976845, type: 2}
   - {fileID: 11400000, guid: 55721903e304c0447bebb5a9c6f8b924, type: 2}
   - {fileID: 11400000, guid: 1bac3665629039840b7674264ce94814, type: 2}
+  - {fileID: 11400000, guid: 5bc2c88664101fa41bbf760be448eb28, type: 2}
   card: {fileID: 0}
   action: {fileID: 0}
   HpText: {fileID: 6248571946363155994}

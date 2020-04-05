@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b6dd2ebceacfd049931dd4679d154c5, type: 3}
-  m_Name: MoveAction
+  m_Name: FastMoveAction
   m_EditorClassIdentifier: 
   Name: 
   Icon: {fileID: 0}
   Origin: {fileID: 0}
   Target: {fileID: 0}
-  ActLerpTime: 1
-  VisualLerpTime: 1.5
+  ActLerpTime: 0.3
+  VisualLerpTime: 1
   EnemyMoveDamage: 35
   arrow: {fileID: -8888095454231964984, guid: 63f214ba5e406ce43a4af68396454581, type: 3}
