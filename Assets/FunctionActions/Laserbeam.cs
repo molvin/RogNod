@@ -49,7 +49,7 @@ public class Laserbeam : FunctionAction
 
     private Node BestNode(Node current, Vector2 AimDirection)
     {
-        Node bestNode = null;
+        Node bestNode = current;
         float best = 0f;
         foreach (Node n in current.Edges.Select((e) => e.To))
         {

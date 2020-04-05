@@ -17,6 +17,9 @@ TextureImporter:
   - first:
       213: 2807314771408455767
     second: Characters_4
+  - first:
+      213: -7914586359189542566
+    second: Pikachu
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -202,6 +205,27 @@ TextureImporter:
       bones: []
       spriteID: 758028a29e595f620800000000000000
       internalID: 2807314771408455767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pikachu
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 173
+        width: 307
+        height: 368
+      alignment: 9
+      pivot: {x: 0.4736718, y: 0.12075429}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a59ea5cb3adb92290800000000000000
+      internalID: -7914586359189542566
       vertices: []
       indices: 
       edges: []
