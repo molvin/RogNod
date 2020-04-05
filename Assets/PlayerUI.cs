@@ -277,7 +277,7 @@ public class PlayerUI : MonoBehaviour
         CurrentEnergy = MaxEnergy;
         inState = false;
         Text.text = "";
-        Deck.ClearHand();
+        //Deck.ClearHand();
         
     }
 
