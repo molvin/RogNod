@@ -52,23 +52,18 @@ public class ShockWaveTeleport : FunctionAction
                 }
             }
         }
-        Target.AddOccupant(actor);
-
-        //next node that is travelled to
-
-        //while true.
-        //set nextNode to next Node in queue
-        //Lerp to nextNode
-        //Check if lerpAlpha >= 1;
-        //if nextNode == target, break. else Damage any other entity on this tile, and return.
-
-
-        
+        Target.AddOccupant(actor);        
     }
     public override IEnumerator Visualize()
     {
 
         List<Node> path = Graph.Instance.ShortestPath(actor.Node, Target);
+        
+        foreach(Node n in path)
+        {
+            n.MarkTileRed();
+        }
+
         for (int i = 0; i < path.Count; i++)
         {
             Node currentNode = i > 0 ? path[i - 1] : actor.Node;
@@ -81,13 +76,16 @@ public class ShockWaveTeleport : FunctionAction
                 time += Time.deltaTime;
                 yield return null;
             }
-            //Iterates through nextNodes Occupants and damages
-            ResetVisualization();
         }
+        ResetVisualization();
     }
 
     public override void ResetVisualization()
     {
+        foreach (Node n in Graph.Instance.ShortestPath(Origin, Target))
+        {
+            n.ResetTileGrapic();
+        }
         actor.transform.localPosition = Vector3.zero;
     }
 }
