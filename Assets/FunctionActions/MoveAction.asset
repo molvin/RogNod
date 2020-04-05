@@ -17,5 +17,6 @@ MonoBehaviour:
   Origin: {fileID: 0}
   Target: {fileID: 0}
   ActLerpTime: 1
-  VisualLerpTime: 1
+  VisualLerpTime: 1.5
   EnemyMoveDamage: 35
+  arrow: {fileID: -8888095454231964984, guid: 63f214ba5e406ce43a4af68396454581, type: 3}

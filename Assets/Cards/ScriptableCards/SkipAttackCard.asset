@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6888204fca626634d807cb179f1472bc, type: 3}
   m_Name: SkipAttackCard
   m_EditorClassIdentifier: 
-  Target: 0
-  Cost: 0
-  Title: 
-  Description: 
-  Action: {fileID: 0}
+  Target: 1
+  Cost: 1
+  Title: Skippy
+  Description: Attacks a node two nodes away
+  Action: {fileID: 11400000, guid: 20d92883729794849bf28dbca6f24a41, type: 2}
   sprite: {fileID: 0}
