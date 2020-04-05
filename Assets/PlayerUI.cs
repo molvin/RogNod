@@ -36,6 +36,8 @@ public class PlayerUI : MonoBehaviour
 
     private int index;
 
+    public Button MainMenuButton;
+
     private void Start()
     {
         Deck = Persistance.Instance.Deck;
@@ -51,6 +53,7 @@ public class PlayerUI : MonoBehaviour
             Energy.Add(Instantiate(EnergyPrefab, EnergyParent));
         }
         Text.text = "";
+        MainMenuButton.onClick.AddListener(() => UnityEngine.SceneManagement.SceneManager.LoadScene(0));
     }
 
     private void Update()

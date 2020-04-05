@@ -54,6 +54,7 @@ public class ShockWaveTeleport : FunctionAction
                 }
             }
         }
+        ResetVisualization();
         Target.AddOccupant(actor);        
     }
     public override IEnumerator Visualize()
