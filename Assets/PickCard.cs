@@ -28,18 +28,20 @@ public class PickCard : MonoBehaviour
                 continue;
             DrawDeck.RemovePermanent(c);
             Button newButton = Instantiate(CardPrefab, CardsParent);
+            Button b = newButton;
             newButton.GetComponent<UICard>().Set(c);
             Card c1 = c;
-            newButton.onClick.AddListener(() => Pick(c));
+            newButton.onClick.AddListener(() => Pick(c, b));
         }
     }
-    private void Pick(Card c)
+    private void Pick(Card c, Button b)
     {
         if (!CanPick)
             return;
         //TODO: do visualization, animation and shit
         Deck.AddPermant(c);
         CanPick = false;
+        b.gameObject.SetActive(false);
     }
     private void NextLevel()
     {

@@ -102,8 +102,8 @@ public class PlayerUI : MonoBehaviour
                 {
                     StopCoroutine(VisualizeCoroutine);
                     VisualizeCoroutine = null;
-                    pendingAction.ResetVisualization();
                 }
+                pendingAction.ResetVisualization();
                 pendingAction = null;
             }
         }
@@ -165,8 +165,6 @@ public class PlayerUI : MonoBehaviour
     {
         if (SelectedCard == null || pendingAction == null)
         {
-            Debug.Log("DOING IT: " + SelectedCard + " " + pendingAction);
-
             return;
         }
     
@@ -181,7 +179,8 @@ public class PlayerUI : MonoBehaviour
         {
             Energy[i].enabled = (i < CurrentEnergy);
         }
-        Deck.playCardFromHand(SelectedCard);
+        if(SelectedCard != MoveCard)
+            Deck.playCardFromHand(SelectedCard);
         SelectedCard = null;
         Text.text = "";
     }
@@ -211,6 +210,9 @@ public class PlayerUI : MonoBehaviour
     }
     private void SelectCard(Card c, int i)
     {
+        if (!inState || GameLoop.Instance.PlayerState.Executing)
+            return;
+
         if (CurrentEnergy < c.Cost)
         {
             SelectedCard = null;

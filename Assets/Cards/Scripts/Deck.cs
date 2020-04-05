@@ -60,12 +60,8 @@ public class Deck : ScriptableObject
     public List<Card> DrawCards(int amount)
     {
         List<Card> toReturn = new List<Card>();
-        for (int i = 0; i < amount; i++)
+        for (int i = 0; i < amount && _cardQueue.Count > 0; i++)
         {
-            if(_cardQueue.Count == 0)
-                _cardQueue = new Queue<Card>(_permanentDeck);
-            if (_cardQueue.Count == 0)
-                break;
             toReturn.Add(_cardQueue.Dequeue());
         }
         OnPlayDeckUpdate?.Invoke(_cardQueue);
@@ -80,6 +76,7 @@ public class Deck : ScriptableObject
 
     public void refillHand()
     {
+        Shuffle();
         int missingCards = handSize - hand.Count;
         if (missingCards == 0)
             return;
@@ -106,8 +103,7 @@ public class Deck : ScriptableObject
     public void playCardFromHand(Card card)
     {
         bool removed = hand.Remove(card);
-        Debug.Log(hand.Count);
-
+        _cardQueue.Enqueue(card);
         OnHandUpdate?.Invoke(hand);
     }
 
