@@ -9,15 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ba5c2475e92177479a7c417a1d81b52, type: 3}
-  m_Name: MultiStrikeAction
+  m_Script: {fileID: 11500000, guid: 2b6dd2ebceacfd049931dd4679d154c5, type: 3}
+  m_Name: MoveAction
   m_EditorClassIdentifier: 
-  Name: MultiStrike
+  Name: 
   Icon: {fileID: 0}
   Origin: {fileID: 0}
   Target: {fileID: 0}
-  damage: 10
-  particalEffect: {fileID: 4989583328115066850, guid: edcb99547e69e19449451d1ba531dd9d,
-    type: 3}
-  Count: 3
-  audioClip: {fileID: 8300000, guid: 87246f205f4aec240b420a84fea97ff8, type: 3}
+  ActLerpTime: 1
+  VisualLerpTime: 1.5
+  EnemyMoveDamage: 35
+  arrow: {fileID: -8888095454231964984, guid: 63f214ba5e406ce43a4af68396454581, type: 3}
