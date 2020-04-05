@@ -19,3 +19,4 @@ MonoBehaviour:
   damage: 40
   particalEffect: {fileID: 4989583328115066850, guid: edcb99547e69e19449451d1ba531dd9d,
     type: 3}
+  audioClip: {fileID: 8300000, guid: 87246f205f4aec240b420a84fea97ff8, type: 3}

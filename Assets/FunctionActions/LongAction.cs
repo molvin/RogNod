@@ -7,7 +7,7 @@ using UnityEngine;
 public class LongAction : FunctionAction
 {
     public int damage;
-
+    public AudioClip audioClip;
     public override void Initialize(Entity actor)
     {
         base.Initialize(actor);
@@ -35,6 +35,7 @@ public class LongAction : FunctionAction
             Debug.Log("Damaging enemy: " + e.name);
             e.Health -= damage;
         }
+        GameLoop.Instance.audioSource.PlayOneShot(audioClip);
         ResetVisualization();
         yield return null;
        // yield return Visualize();
