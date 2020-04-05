@@ -9,6 +9,9 @@ public class ShockWaveTeleport : FunctionAction
     public int damage;
     public float actLerpTime;
     public int maxRange;
+    private GameObject visualizeChar;
+
+
     public AudioClip audioClip;
 
     public override void Initialize(Entity actor)
@@ -22,6 +25,11 @@ public class ShockWaveTeleport : FunctionAction
     }
     public override IEnumerator Act()
     {
+        if (visualizeChar != null)
+        {
+            ResetVisualization();
+        }
+
         List<Node> path = Graph.Instance.ShortestPath(Origin, Target);
         Debug.Log(path.Count);
 
@@ -29,7 +37,7 @@ public class ShockWaveTeleport : FunctionAction
         Origin.RemoveOccupant(actor);
         for(int d = Origin.Occupants.Count -1; d >= 0; d--)
         {
-                Origin.Occupants[d].Health -= damage;
+             Origin.Occupants[d].Health -= damage;
         }
 
         for (int i = 0; i < path.Count; i++) {
@@ -59,13 +67,23 @@ public class ShockWaveTeleport : FunctionAction
     }
     public override IEnumerator Visualize()
     {
+        if (visualizeChar != null)
+        {
+            ResetVisualization();
+        }
+        this.Origin = actor.Node;
 
         List<Node> path = Graph.Instance.ShortestPath(actor.Node, Target);
-        
-        foreach(Node n in path)
+        foreach (Node n in path)
         {
             n.MarkTile(Node.Marker.Red);
         }
+
+        visualizeChar = Instantiate(actor.gameObject);
+        SpriteRenderer renderer = visualizeChar.GetComponentInChildren<SpriteRenderer>();
+        Color c = renderer.color;
+        c.a = 0.65f;
+        renderer.color = c;
 
         for (int i = 0; i < path.Count; i++)
         {
@@ -75,19 +93,23 @@ public class ShockWaveTeleport : FunctionAction
             //lerps position to nextNode
             while (time / (actLerpTime / path.Count) <= 1f)
             {
-                actor.transform.position = Vector3.Lerp(currentNode.transform.position, nextNode.transform.position, time / (actLerpTime / path.Count));
+                visualizeChar.transform.position = Vector3.Lerp(currentNode.transform.position, nextNode.transform.position, time / (actLerpTime / path.Count));
                 time += Time.deltaTime;
                 yield return null;
             }
         }
-        ResetVisualization();
+       // ResetVisualization();
     }
 
     public override void ResetVisualization()
     {
-        foreach (Node n in Graph.Instance.ShortestPath(Origin, Target))
+        if (visualizeChar != null)
         {
-            n.MarkTile(Node.Marker.Red);
+            Destroy(visualizeChar);
+        }
+        foreach (Node n in Graph.Instance.ShortestPath(actor.Node, Target))
+        {
+            n.DemarkTile(Node.Marker.Red);
         }
         actor.transform.localPosition = Vector3.zero;
     }
