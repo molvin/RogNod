@@ -4,34 +4,34 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 4809639760874263086
-    second: rognod_concept_0
+    second: Rocks
   - first:
       213: -5092377170886943752
-    second: rognod_concept_1
+    second: Plane
   - first:
       213: 6045861956144463205
-    second: rognod_concept_2
+    second: Plane_Red
   - first:
       213: -3802767286388481799
-    second: rognod_concept_3
+    second: Rocks_Red
   - first:
       213: -361718470343399362
-    second: rognod_concept_4
+    second: Rocks_Yellow
   - first:
       213: -4155921400635668912
-    second: rognod_concept_5
+    second: Rocks_Blue
   - first:
       213: 3740697999444091331
-    second: rognod_concept_6
+    second: Plane_Blue
   - first:
       213: 4868127274553374841
-    second: rognod_concept_7
+    second: Plane_Yellow
   - first:
       213: 5080526699876707353
-    second: rognod_concept_8
+    second: Wave1
   - first:
       213: 7877334579185936521
-    second: rognod_concept_9
+    second: Wave2
   - first:
       213: 3362911121797679257
     second: rognod_concept_10
@@ -47,6 +47,36 @@ TextureImporter:
   - first:
       213: -6675051230527210900
     second: rognod_concept_14
+  - first:
+      213: 2705541089165495017
+    second: Rocks
+  - first:
+      213: 5807872958877883214
+    second: Plane
+  - first:
+      213: 4552262942378912397
+    second: Plane_Red
+  - first:
+      213: 3343583485936152383
+    second: Rocks_Red
+  - first:
+      213: 6507232572704953707
+    second: Rocks_Yellow
+  - first:
+      213: 1395683025097639093
+    second: Rocks_Blue
+  - first:
+      213: -7204597978008492132
+    second: Plane_Blue
+  - first:
+      213: 3080487257582707307
+    second: Plane_Yellow
+  - first:
+      213: -3689895456017612082
+    second: Wave1
+  - first:
+      213: -6283056696809330602
+    second: Wave2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -132,316 +162,211 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: rognod_concept_0
+      name: Rocks
       rect:
         serializedVersion: 2
         x: 0
-        y: 745
-        width: 480
-        height: 246
+        y: 761
+        width: 508
+        height: 238
       alignment: 9
-      pivot: {x: 0.50570554, y: 0.36598366}
+      pivot: {x: 0.47544414, y: 0.3128093}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e22518441e54fb240800000000000000
-      internalID: 4809639760874263086
+      spriteID: 9eacee839430c8520800000000000000
+      internalID: 2705541089165495017
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rognod_concept_1
+      name: Plane
       rect:
         serializedVersion: 2
-        x: 319
-        y: 984
-        width: 6
-        height: 5
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 3
+        y: 489
+        width: 544
+        height: 267
+      alignment: 9
+      pivot: {x: 0.4443108, y: 0.37652427}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8fb99f291fd3459b0800000000000000
-      internalID: -5092377170886943752
+      spriteID: e4b53864fa5b99050800000000000000
+      internalID: 5807872958877883214
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rognod_concept_2
+      name: Plane_Red
       rect:
         serializedVersion: 2
         x: 0
-        y: 500
-        width: 539
-        height: 245
+        y: 252
+        width: 565
+        height: 237
       alignment: 9
-      pivot: {x: 0.45205975, y: 0.36543617}
+      pivot: {x: 0.44638065, y: 0.3007407}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 56df901ba6737e350800000000000000
-      internalID: 6045861956144463205
+      spriteID: d8a6ba4f603ec2f30800000000000000
+      internalID: 4552262942378912397
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rognod_concept_3
-      rect:
-        serializedVersion: 2
-        x: 142
-        y: 736
-        width: 6
-        height: 11
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9f0a65b0d4bd93bc0800000000000000
-      internalID: -3802767286388481799
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rognod_concept_4
-      rect:
-        serializedVersion: 2
-        x: 322
-        y: 738
-        width: 6
-        height: 5
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e38eb7ab7faeafaf0800000000000000
-      internalID: -361718470343399362
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rognod_concept_5
-      rect:
-        serializedVersion: 2
-        x: 171
-        y: 733
-        width: 6
-        height: 5
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 056caa051833356c0800000000000000
-      internalID: -4155921400635668912
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rognod_concept_6
+      name: Rocks_Red
       rect:
         serializedVersion: 2
         x: 0
-        y: 255
-        width: 555
-        height: 223
+        y: 18
+        width: 504
+        height: 236
       alignment: 9
-      pivot: {x: 0.4546639, y: 0.27415693}
+      pivot: {x: 0.4770171, y: 0.37540716}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c121ece201a9e330800000000000000
-      internalID: 3740697999444091331
+      spriteID: f3f2614277bc66e20800000000000000
+      internalID: 3343583485936152383
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rognod_concept_7
+      name: Rocks_Yellow
       rect:
         serializedVersion: 2
-        x: 150
-        y: 469
-        width: 6
-        height: 11
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 978f429b6ff0f8340800000000000000
-      internalID: 4868127274553374841
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rognod_concept_8
-      rect:
-        serializedVersion: 2
-        x: 330
-        y: 471
-        width: 6
-        height: 5
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 91ce902ad18a18640800000000000000
-      internalID: 5080526699876707353
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rognod_concept_9
-      rect:
-        serializedVersion: 2
-        x: 179
-        y: 466
-        width: 6
-        height: 5
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9886749501ae15d60800000000000000
-      internalID: 7877334579185936521
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rognod_concept_10
-      rect:
-        serializedVersion: 2
-        x: 319
-        y: 257
-        width: 6
-        height: 5
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 99806f909d57bae20800000000000000
-      internalID: 3362911121797679257
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rognod_concept_11
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 27
-        width: 491
-        height: 226
+        x: 568
+        y: 31
+        width: 511
+        height: 232
       alignment: 9
-      pivot: {x: 0.48185283, y: 0.3541236}
+      pivot: {x: 0.4982564, y: 0.29644647}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ced796d372ca4c090800000000000000
-      internalID: -8015092152278614548
+      spriteID: b651eee4c855e4a50800000000000000
+      internalID: 6507232572704953707
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rognod_concept_12
+      name: Rocks_Blue
       rect:
         serializedVersion: 2
-        x: 134
-        y: 29
-        width: 115
-        height: 5
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 572
+        y: 278
+        width: 525
+        height: 216
+      alignment: 9
+      pivot: {x: 0.48642242, y: 0.32674465}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ced224bc27247fd0800000000000000
-      internalID: -2345206432998957368
+      spriteID: 5b4ccf111567e5310800000000000000
+      internalID: 1395683025097639093
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rognod_concept_13
+      name: Plane_Blue
       rect:
         serializedVersion: 2
-        x: 555
-        y: 839
-        width: 162
-        height: 92
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 572
+        y: 497
+        width: 548
+        height: 230
+      alignment: 9
+      pivot: {x: 0.46097693, y: 0.36053467}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d7ed7989861cdadb0800000000000000
-      internalID: -4778950974589378947
+      spriteID: c976e438f40240c90800000000000000
+      internalID: -7204597978008492132
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rognod_concept_14
+      name: Plane_Yellow
       rect:
         serializedVersion: 2
-        x: 567
-        y: 721
-        width: 148
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 547
+        y: 727
+        width: 586
+        height: 264
+      alignment: 9
+      pivot: {x: 0.49391803, y: 0.3143692}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c6a34e295447d53a0800000000000000
-      internalID: -6675051230527210900
+      spriteID: b62a553f6d610ca20800000000000000
+      internalID: 3080487257582707307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave1
+      rect:
+        serializedVersion: 2
+        x: 1187
+        y: 901
+        width: 137
+        height: 70
+      alignment: 9
+      pivot: {x: 0.47398478, y: 0.3981681}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec20eb5f1abdaccc0800000000000000
+      internalID: -3689895456017612082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave2
+      rect:
+        serializedVersion: 2
+        x: 1194
+        y: 777
+        width: 159
+        height: 86
+      alignment: 9
+      pivot: {x: 0.42714858, y: 0.31350565}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6586a0b29391ec8a0800000000000000
+      internalID: -6283056696809330602
       vertices: []
       indices: 
       edges: []

@@ -101,11 +101,12 @@ MonoBehaviour:
   Renderer: {fileID: 4652075917547502097}
   DefaultTile: {fileID: 4809639760874263086, guid: 51252fd7f2e36f44b91e9a84fb5b0fe0,
     type: 3}
-  RedTile: {fileID: -8015092152278614548, guid: 51252fd7f2e36f44b91e9a84fb5b0fe0,
+  RedTile: {fileID: -3802767286388481799, guid: 51252fd7f2e36f44b91e9a84fb5b0fe0,
     type: 3}
-  YellowTile: {fileID: 0}
-  BlueTile: {fileID: 0}
-  OccupantHeight: 0.3
+  YellowTile: {fileID: -361718470343399362, guid: 51252fd7f2e36f44b91e9a84fb5b0fe0,
+    type: 3}
+  BlueTile: {fileID: -4155921400635668912, guid: 51252fd7f2e36f44b91e9a84fb5b0fe0,
+    type: 3}
 --- !u!65 &1546686788743980194
 BoxCollider:
   m_ObjectHideFlags: 0
